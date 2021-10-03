@@ -1,7 +1,7 @@
 const {Client, Intents} = require('discord.js');
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const axios = require('axios').default;
-const token = 'ODk0MjE0MTAxMTA1MDA0NTQ0.YVmvxw.EHVkvyXt_wUNb0vp9flcqbD_Qnw';
+const config = require('./config.json');
 
 bot.once('ready', () =>{
     console.log('RaveBot is online!');
@@ -53,4 +53,4 @@ bot.on('messageCreate', message =>{
   
   );
 
-bot.login(token);
+bot.login(config.TOKEN);
