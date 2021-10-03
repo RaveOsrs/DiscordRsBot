@@ -1,0 +1,22 @@
+{
+  "name": "discrsbot",
+  "version": "1.0.0",
+  "description": "Discord bot for rs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perslegt/DiscRsBot.git"
+  },
+  "author": "Per",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perslegt/DiscRsBot/issues"
+  },
+  "homepage": "https://github.com/perslegt/DiscRsBot#readme",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
+}
