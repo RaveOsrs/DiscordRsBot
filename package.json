@@ -1,0 +1,23 @@
+{
+  "name": "discordrsbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaveOsrs/DiscordRsBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaveOsrs/DiscordRsBot/issues"
+  },
+  "homepage": "https://github.com/RaveOsrs/DiscordRsBot#readme",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "discord.js": "^13.1.0"
+  }
+}
