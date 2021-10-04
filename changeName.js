@@ -34,7 +34,7 @@ bot.on('messageCreate', message =>{
             .post('https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws', params, config)
             .then(function (response) {
                 message.member.setNickname(NickName);
-                NameChangeChannel.send('Name changed from "' + OldName + '" to "' + NickName + '"');
+                NameChangeChannel.send('Name changed from **' + OldName + '** to **' + NickName + '**');
             })
             .catch(function (error) {
                 message.channel.send("Player **" + NickName + "** Does not exist, please type your RSN exactly how it appears in game.");
