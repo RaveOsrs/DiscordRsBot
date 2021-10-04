@@ -8,6 +8,6 @@ bot.once('ready', () =>{
 });
 
 postrsnRequire = require('./postRsn.js');
-namechangeRequire = require("./nameChange.js");
+namechangeRequire = require("./changeName.js");
 
 bot.login(process.env.TOKEN);
