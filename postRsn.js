@@ -1,3 +1,12 @@
+const {Client, Intents} = require('discord.js');
+const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
+const axios = require('axios').default;
+const config = require('./config.json');
+
+bot.once('ready', () =>{
+    console.log('postRsn is online!');
+});
+
 bot.on('messageCreate', message =>{
     //change below line to channel new users post their names in
     if(message.channel.name == "post-rsn" && message.member.roles.cache.some(role => role.name === "Guest")) {
@@ -44,3 +53,5 @@ bot.on('messageCreate', message =>{
     }
 }
 );
+
+bot.login(process.env.TOKEN);
