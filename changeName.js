@@ -18,7 +18,7 @@ bot.on('messageCreate', message =>{
         var NameChangeChannel = bot.channels.cache.find(channel => channel.name === "name-changes");
 
         if(NickName.length > 12 || SpecialChars == true) {
-            message.channel.send("This RSN is invalid, please type your RSN exactly how it appears in game.");
+            message.channel.send("This RSN doesn't exist, please type your RSN exactly how it appears in game.");
         }
         else{
             const params = new URLSearchParams()
@@ -37,7 +37,7 @@ bot.on('messageCreate', message =>{
                 NameChangeChannel.send('Name changed from **' + OldName + '** to **' + NickName + '**');
             })
             .catch(function (error) {
-                message.channel.send("Player **" + NickName + "** Does not exist, please type your RSN exactly how it appears in game.");
+                message.channel.send("Player **" + NickName + "** doesn't exist, please type your RSN exactly how it appears in game.");
             });
         }
     }
