@@ -5,8 +5,8 @@ const config = require('./config.json');
 
 const channel = bot.channels.cache.find(channel => channel.name == "bot-testing");
 
-const tob = message.guild.roles.cache.find(role => role.name === "tob");
-const tobHM = message.guild.roles.cache.find(role => role.name === "tob-hm");
+const tob = bot.guild.roles.cache.find(role => role.name === "tob");
+const tobHM = bot.guild.roles.cache.find(role => role.name === "tob-hm");
  
 const tobEmoji = 'tob';
 const tobHMEmoji = 'tob-hm';
