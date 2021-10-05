@@ -9,6 +9,6 @@ bot.once('ready', () =>{
 
 postrsnRequire = require('./postRsn.js');
 namechangeRequire = require("./changeName.js");
-//reactionrolesRequire = require("./reactionRoles.js");
+reactionrolesRequire = require("./reactionRoles.js");
 
 bot.login(process.env.TOKEN);
