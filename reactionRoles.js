@@ -18,7 +18,7 @@ let embed = new Discord.MessageEmbed()
         + `${tobEmoji} for Tob team\n`
         + `${tobHMEmoji} for Tob HM team`);
  
-let messageEmbed = await message.channel.send(embed);
+let messageEmbed = message.channel.send(embed);
 messageEmbed.react(tobEmoji);
 messageEmbed.react(tobHMEmoji);
 
