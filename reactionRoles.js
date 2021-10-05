@@ -3,7 +3,7 @@ const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MES
 const axios = require('axios').default;
 const config = require('./config.json');
 
-const channel = client.channels.cache.find(channel => channel.name == "bot-testing");
+const channel = bot.channels.cache.find(channel => channel.name == "bot-testing");
  
 let embed = new Discord.MessageEmbed()
     .setColor('#e42643')
