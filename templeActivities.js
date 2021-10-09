@@ -4,7 +4,7 @@ const axios = require('axios').default;
 const config = require('./config.json');
 
 bot.once('ready', () =>{
-    console.log('postRsn is online!');
+    console.log('templeActivites is online!');
 });
 
 bot.on('ready', () =>{
