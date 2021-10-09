@@ -7,14 +7,14 @@ bot.once('ready', () =>{
     console.log('postRsn is online!');
 });
 
-bot.on('ready', async () =>{
-    const HOUR = 1000 * 60 *60
+bot.on('ready', () =>{
+    const HOUR = 1000 * 60 *60;
 
     bot.setInterval(() => {
         const anHourAgo = Date.now() - HOUR;
 
         try {
-            const response = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386");
+            const response = fetch("https://templeosrs.com/api/group_achievements.php?id=1386");
             const data = response.json();
 
             for (activity in data) {
