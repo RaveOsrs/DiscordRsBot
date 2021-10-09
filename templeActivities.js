@@ -7,7 +7,7 @@ bot.once('ready', () =>{
     console.log('postRsn is online!');
 });
 
-bot.on('ready', () =>{
+bot.on('ready', async () =>{
     const HOUR = 1000 * 60 *60
 
     bot.setInterval(() => {
