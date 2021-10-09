@@ -8,7 +8,7 @@ bot.once('ready', () =>{
 });
 
 bot.on('ready', () =>{
-    const HOUR = 1000 * 60 *60;
+    const HOUR = 2000 * 60 *60;
 
     bot.setInterval(() => {
         const anHourAgo = Date.now() - HOUR;
@@ -37,7 +37,7 @@ bot.on('ready', () =>{
             message.channel.send('Oops, there was an error fetching the API');
             console.log(error);
         }
-    }, HOUR);
+    }, 60000);
 });
 
 function numberWithCommas(x) {
