@@ -10,5 +10,6 @@ bot.once('ready', () =>{
 postrsnRequire = require('./postRsn.js');
 namechangeRequire = require("./changeName.js");
 //reactionrolesRequire = require("./reactionRoles.js");
+templeactivitiesRequire = require("./templeActivities.js");
 
 bot.login(process.env.TOKEN);
