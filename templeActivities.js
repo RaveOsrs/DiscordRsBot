@@ -12,15 +12,19 @@ bot.on('ready', () =>{
 
     bot.setInterval(() => {
         const anHourAgo = Date.now() - HOUR;
-
+        console.log('in the interval');
         try {
             const response = fetch("https://templeosrs.com/api/group_achievements.php?id=1386");
             const data = response.json();
+            console.log(data);
 
             for (activity in data) {
                 var posted = new Date(activity.Date);
+                console.log(activity);
+                console.log(posted + " - " + anHourAgo);
                 if (posted > anHourAgo) {
                     const embed = new MessageEmbed();
+                    console.log(posted + " - " + anHourAgo);
                     switch(activity.Type) {
                         case "Skill":
                             embed.setDescription(`**${activity.Username}**, Reached ${numberWithCommas(activity.Xp)} in ${activity.Skill}!`);
