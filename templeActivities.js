@@ -6,7 +6,7 @@ bot.once('ready', () =>{
     console.log('templeActivites is online!');
 });
 
-bot.on('message', message =>{
+bot.on('message', async message =>{
     const HOUR = 2000 * 60 *60;
     if (!message.channel.name == "bot-testing") return;
     if (message.author.bot) return;
@@ -15,7 +15,7 @@ bot.on('message', message =>{
     const anHourAgo = Date.now() - HOUR;
     console.log('in the interval');
     try {
-        const response = fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+        const response = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(data => response.json());
         console.log(data);
 
