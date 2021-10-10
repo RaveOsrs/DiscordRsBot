@@ -47,3 +47,5 @@ bot.on('ready', () =>{
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+bot.login(process.env.TOKEN);
