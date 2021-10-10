@@ -18,8 +18,11 @@ bot.on('message', async message =>{
             .then(data => {
                 message.channel.send(data);
                 for (activity in data) {
-                    message.channel.send(activity);
-                    var posted = new Date(activity.Date);
+                    message.channel.send(activity.date);
+                    message.channel.send(activity.username);
+                    message.channel.send(activity.skill);
+                    message.channel.send(activity.xp);
+                    /*var posted = new Date(activity.Date);
                     console.log(activity);
                     console.log(posted + " - " + anHourAgo);
                     if (posted > anHourAgo) {
@@ -33,7 +36,7 @@ bot.on('message', async message =>{
                                 embed.setDescription(`**${activity.Username}**, Reached ${numberWithCommas(activity.Xp)} ${activity.Skill} kills!`);
                                 break;
                         }
-                        message.channel.send(embed);
+                        message.channel.send(embed);*/
                     }
                 }
             })
