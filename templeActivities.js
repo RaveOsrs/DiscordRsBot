@@ -10,7 +10,7 @@ bot.once('ready', () =>{
 bot.on('ready', () =>{
     const HOUR = 2000 * 60 *60;
 
-    bot.setInterval(() => {
+    setInterval(() => {
         const anHourAgo = Date.now() - HOUR;
         console.log('in the interval');
         try {
