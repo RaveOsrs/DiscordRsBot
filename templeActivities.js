@@ -1,19 +1,21 @@
-const discord = require('discord.js');
-const bot = new discord.Client();
+const {Client, Intents} = require('discord.js');
+const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
+const axios = require('axios').default;
+const config = require('./config.json');
 
 bot.once('ready', () =>{
     console.log('templeActivites is online!');
 });
 
-bot.on('ready', () =>{
+bot.on('interactionCreate', async interaction =>{
     const HOUR = 2000 * 60 *60;
 
     setInterval(() => {
         const anHourAgo = Date.now() - HOUR;
         console.log('in the interval');
         try {
-            const response = fetch("https://templeosrs.com/api/group_achievements.php?id=1386");
-            const data = response.json();
+            const response = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+                .then(data => response.json());
             console.log(data);
 
             for (activity in data) {
