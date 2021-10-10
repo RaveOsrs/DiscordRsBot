@@ -1,6 +1,6 @@
 const {Client, Intents} = require('discord.js');
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
-var fetch = import("./node_modules/node-fetch");
+const fetch = require('cross-fetch');
 
 bot.once('ready', () =>{
     console.log('templeActivites is online!');
