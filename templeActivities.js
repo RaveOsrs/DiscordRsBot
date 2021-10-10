@@ -1,12 +1,13 @@
 const {Client, Intents} = require('discord.js');
-const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const fetch = require('cross-fetch');
+const {TOKEN} = require('./config.json');
 
-bot.once('ready', () =>{
+client.once('ready', () =>{
     console.log('templeActivites is online!');
 });
 
-bot.on('message', async message =>{
+client.on('message', async message =>{
     const HOUR = 2000 * 60 *60;
     if (!message.channel.name == "bot-testing") return;
     if (message.author.bot) return;
@@ -36,8 +37,8 @@ bot.on('message', async message =>{
                                 embed.setDescription(`**${activity.Username}**, Reached ${numberWithCommas(activity.Xp)} ${activity.Skill} kills!`);
                                 break;
                         }
-                        message.channel.send(embed);*/
-                    }
+                        message.channel.send(embed);
+                    }*/
                 }
             })
         
@@ -52,4 +53,4 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-bot.login(process.env.TOKEN);
+client.login(process.env.TOKEN);

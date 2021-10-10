@@ -20,4 +20,4 @@ bclientot.once('ready', () =>{
     console.log('reactionRoles is online!');
 });
 
-bclientot.login(process.env.TOKEN);
+client.login(process.env.TOKEN);
