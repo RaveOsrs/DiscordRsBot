@@ -14,7 +14,7 @@ bot.on('message', async message =>{
     const anHourAgo = Date.now() - HOUR;
     try {
         let {file} = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
-            .then(response => response.json())
+            .then(response => console.log(response.json()))
             .then(response => {
                 for (activity in response) {
                     var posted = new Date(activity.Date);
