@@ -1,8 +1,8 @@
 const {Client, Intents} = require('discord.js');
-const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 module.exports = client;
 
-bot.once('ready', () =>{
+client.once('ready', () =>{
     console.log('RaveBot is online!');
 });
 
@@ -11,4 +11,4 @@ namechangeRequire = require("./changeName.js");
 //reactionrolesRequire = require("./reactionRoles.js");
 templeactivitiesRequire = require("./templeActivities.js");
 
-bot.login(process.env.TOKEN);
+client.login(process.env.TOKEN);

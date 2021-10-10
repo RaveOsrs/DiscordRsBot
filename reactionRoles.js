@@ -1,9 +1,9 @@
 const {Client, Intents} = require('discord.js');
-const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL", "MESSAGE", "REACTION"] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL", "MESSAGE", "REACTION"] });
 const axios = require('axios').default;
 const config = require('./config.json');
 
-const channel = bot.channels.cache.find(channel => channel.name == "bot-testing");
+const channel = client.channels.cache.find(channel => channel.name == "bot-testing");
  
 let embed = new Client.MessageEmbed()
     .setColor('#e42643')
@@ -16,8 +16,8 @@ let messageEmbed = channel.send(embed);
 messageEmbed.react(tobEmoji);
 messageEmbed.react(tobHMEmoji);
 
-bot.once('ready', () =>{
+bclientot.once('ready', () =>{
     console.log('reactionRoles is online!');
 });
 
-bot.login(process.env.TOKEN);
+bclientot.login(process.env.TOKEN);

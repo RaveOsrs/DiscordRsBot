@@ -1,13 +1,13 @@
 const {Client, Intents} = require('discord.js');
-const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const axios = require('axios').default;
 const config = require('./config.json');
 
-bot.once('ready', () =>{
+client.once('ready', () =>{
     console.log('changeName is online!');
 });
 
-bot.on('messageCreate', message =>{
+client.on('messageCreate', message =>{
     if(message.channel.name == "name-changes") {
         if (message.author.bot) return; //so it doesnt reply to itself
 
@@ -43,4 +43,4 @@ bot.on('messageCreate', message =>{
     }
 });
 
-bot.login(process.env.TOKEN);
+client.login(process.env.TOKEN);
