@@ -14,7 +14,7 @@ bot.on('interactionCreate', async interaction =>{
         const anHourAgo = Date.now() - HOUR;
         console.log('in the interval');
         try {
-            const response = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+            const response = fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
                 .then(data => response.json());
             console.log(data);
 
