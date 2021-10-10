@@ -13,7 +13,7 @@ bot.on('message', async message =>{
 
     const anHourAgo = Date.now() - HOUR;
     try {
-        let {file} = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+        const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(response => response.json())
             .then(data => {
                 message.channel.send(data);
