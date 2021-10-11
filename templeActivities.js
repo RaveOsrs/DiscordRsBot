@@ -20,6 +20,10 @@ client.on('message', async message =>{
                 for (x in data) {
                     for (activity in data[x]) {
                         console.log(data[x][activity]);
+                        console.log(data.data.Username);
+                        console.log(data[x][activity].Username);
+                        console.log(data[activity].Username);
+                        console.log(data[x].Username);
                     }
                     console.log("-------");
                     console.log(data[x]);
