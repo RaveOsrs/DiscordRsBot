@@ -24,23 +24,23 @@ client.on('message', async message =>{
                         console.log(data[x][activity].Skill);
                         console.log(data[x][activity].Xp);
                         console.log(data[x][activity].Type);
-                    }
-                    /*var posted = new Date(activity.Date);
-                    console.log(activity);
-                    console.log(posted + " - " + anHourAgo);
-                    if (posted > anHourAgo) {
-                        const embed = new MessageEmbed();
+
+                        var posted = new Date(data[x][activity].Date);
                         console.log(posted + " - " + anHourAgo);
-                        switch(activity.Type) {
-                            case "Skill":
-                                embed.setDescription(`**${activity.Username}**, Reached ${numberWithCommas(activity.Xp)} in ${activity.Skill}!`);
-                                break;
-                            case "Pvm":
-                                embed.setDescription(`**${activity.Username}**, Reached ${numberWithCommas(activity.Xp)} ${activity.Skill} kills!`);
-                                break;
+                        if (posted > anHourAgo) {
+                            const embed = new MessageEmbed();
+                            console.log(posted + " - " + anHourAgo);
+                            switch(data[x][activity].Type) {
+                                case "Skill":
+                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)} in ${data[x][activity].Skill}!`);
+                                    break;
+                                case "Pvm":
+                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)} ${data[x][activity].Skill} kills!`);
+                                    break;
+                            }
+                            message.channel.send(embed);
                         }
-                        message.channel.send(embed);
-                    }*/
+                    }
                 }
             })
         
