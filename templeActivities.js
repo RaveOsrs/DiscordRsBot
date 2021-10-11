@@ -12,7 +12,7 @@ client.on('message', async message =>{
     if (message.author.bot) return;
 
     const anHourAgo = new Date();
-    anHourAgo.setHours(anHourAgo.getHours() - 24);
+    anHourAgo.setHours(anHourAgo.getHours() - 78);
     try {
         const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(response => response.json())
