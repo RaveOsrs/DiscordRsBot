@@ -1,4 +1,4 @@
-const {Client, Intents} = require('discord.js');
+const {Client, Intents, MessageEmbed} = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const fetch = require('cross-fetch');
 const {TOKEN} = require('./config.json');
