@@ -5,7 +5,6 @@ const {TOKEN} = require('./config.json');
 
 client.once('ready', () =>{    
     const channel = client.channels.cache.find(channel => channel.name == "general");
-    if (message.author.bot) return;
 
     const minutesAgo = new Date();
     minutesAgo.setMinutes(minutesAgo.getMinutes() - 5);
@@ -40,7 +39,7 @@ client.once('ready', () =>{
                 }
             })
         }catch (error) {
-            message.channel.send('Oops, there was an error fetching the API');
+            channel.send('Oops, there was an error fetching the API');
             console.log(error);
         }
     }, 5 * 60 * 1000)
