@@ -8,47 +8,45 @@ client.once('ready', () =>{
 });
 
 client.on('message', async message =>{
-    if (!message.channel.name == "bot-testing") return;
+    const channel = client.channels.cache.find(channel => channel.name == "general");
     if (message.author.bot) return;
 
     const minutesAgo = new Date();
     minutesAgo.setMinutes(minutesAgo.getMinutes() - 5);
-    setInterval(() => {
-        try {
-            const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
-                .then(response => response.json())
-                .then(data => {
-                    for (x in data) {
-                        for (activity in data[x]) {    
-                            console.log("checking templeosrs.");
-                            var posted = new Date(data[x][activity].Date);
+    try {
+        const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+            .then(response => response.json())
+            .then(data => {
+                for (x in data) {
+                    for (activity in data[x]) {
+                        var posted = new Date(data[x][activity].Date);
+                        console.log(posted + " - " + anHourAgo);
+                        if (posted > anHourAgo) {
                             console.log(posted + " - " + anHourAgo);
-                            if (posted > anHourAgo) {
-                                console.log(posted + " - " + anHourAgo);
-                                switch(data[x][activity].Type) {
-                                    case "Skill":
-                                        console.log("skill");
-                                        //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+"!");
-                                        message.channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
-                                        break;
-                                    case "Pvm":
-                                        console.log("pvm");
-                                        //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+" kills!");
-                                        message.channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
-                                        break;
-                                    default:
-                                        message.channel.send(`Uhh this is not supposed to happen :(`);
-                                }
+                            switch(data[x][activity].Type) {
+                                case "Skill":
+                                    console.log("skill");
+                                    //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+"!");
+                                    channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
+                                    break;
+                                case "Pvm":
+                                    console.log("pvm");
+                                    //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+" kills!");
+                                    channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
+                                    break;
+                                default:
+                                    channel.send(`Uhh this is not supposed to happen :(`);
                             }
                         }
                     }
-                })
-            
-        } catch (error) {
-            message.channel.send('Oops, there was an error fetching the API');
-            console.log(error);
-        }
-    }, 300000);
+                }
+            })
+        
+    } catch (error) {
+        message.channel.send('Oops, there was an error fetching the API');
+        console.log(error);
+    }
+
 });
 
 function numberWithCommas(x) {
