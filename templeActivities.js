@@ -21,9 +21,8 @@ client.on('message', async message =>{
                 for (x in data) {
                     for (activity in data[x]) {
                         var posted = new Date(data[x][activity].Date);
-                        console.log(posted + " - " + minutesAgo);
+                        console.log("Checking TempleOSRS");
                         if (posted > minutesAgo) {
-                            console.log("Checking TempleOSRS...");
                             switch(data[x][activity].Type) {
                                 case "Skill":
                                     console.log("skill");
