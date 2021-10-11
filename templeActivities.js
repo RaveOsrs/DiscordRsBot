@@ -8,13 +8,14 @@ client.once('ready', () =>{
 });
 
 client.on('message', async message =>{
-    const channel = client.channels.cache.find(channel => channel.name == "general");
+    const channel = client.channels.cache.find(channel => channel.name == "bot-testing");
     if (message.author.bot) return;
 
     const minutesAgo = new Date();
     minutesAgo.setMinutes(minutesAgo.getMinutes() - 5);
-    try {
-        const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+    setInterval(async function() {
+        try {
+            fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(response => response.json())
             .then(data => {
                 for (x in data) {
@@ -43,12 +44,11 @@ client.on('message', async message =>{
                     }
                 }
             })
-        
-    } catch (error) {
-        message.channel.send('Oops, there was an error fetching the API');
-        console.log(error);
-    }
-
+        }catch (error) {
+            message.channel.send('Oops, there was an error fetching the API');
+            console.log(error);
+        }
+    }, 5 * 60 * 1000)
 });
 
 function numberWithCommas(x) {
