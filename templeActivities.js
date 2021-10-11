@@ -8,7 +8,7 @@ client.once('ready', () =>{
 });
 
 client.on('message', async message =>{
-    const HOUR = 2000 * 60 *60;
+    const HOUR = 24000 * 60 *60;
     if (!message.channel.name == "bot-testing") return;
     if (message.author.bot) return;
 
