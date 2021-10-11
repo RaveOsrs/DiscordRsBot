@@ -33,12 +33,15 @@ client.on('message', async message =>{
                             switch(data[x][activity].Type) {
                                 case "Skill":
                                     embed.setDescription(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)} in ${data[x][activity].Skill}!`);
+                                    message.channel.send(embed);
                                     break;
                                 case "Pvm":
                                     embed.setDescription(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)} ${data[x][activity].Skill} kills!`);
+                                    message.channel.send(embed);
                                     break;
+                                default:
+                                    embed.setDescription(`Uhh this is supposed to happen :(`);
                             }
-                            message.channel.send(embed);
                         }
                     }
                 }
