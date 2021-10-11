@@ -18,7 +18,7 @@ client.on('message', async message =>{
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                for (activity in data) {
+                for (activity in data.Data) {
                     console.log(activity.date);
                     console.log(activity.username);
                     console.log(activity.skill);
