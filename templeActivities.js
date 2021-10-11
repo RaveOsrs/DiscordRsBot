@@ -33,13 +33,13 @@ client.on('message', async message =>{
                             switch(data[x][activity].Type) {
                                 case "Skill":
                                     console.log("skill");
-                                    embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp {data[x][activity].Skill+"!");
+                                    embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+"!");
                                     //embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
                                     message.channel.send(embed);
                                     break;
                                 case "Pvm":
                                     console.log("pvm");
-                                    embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp {data[x][activity].Skill+" kills!");
+                                    embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+" kills!");
                                     //embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
                                     message.channel.send(embed);
                                     break;
