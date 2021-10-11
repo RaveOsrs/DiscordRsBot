@@ -19,13 +19,8 @@ client.on('message', async message =>{
                 .then(response => response.json())
                 .then(data => {
                     for (x in data) {
-                        for (activity in data[x]) {
-                            console.log(data[x][activity].Username);
-                            console.log(data[x][activity].Date);
-                            console.log(data[x][activity].Skill);
-                            console.log(data[x][activity].Xp);
-                            console.log(data[x][activity].Type);
-    
+                        for (activity in data[x]) {    
+                            console.log("checking templeosrs.");
                             var posted = new Date(data[x][activity].Date);
                             console.log(posted + " - " + anHourAgo);
                             if (posted > anHourAgo) {
