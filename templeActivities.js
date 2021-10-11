@@ -29,21 +29,21 @@ client.on('message', async message =>{
                         console.log(posted + " - " + anHourAgo);
                         if (posted > anHourAgo) {
                             console.log(posted + " - " + anHourAgo);
+                            const embed = new MessageEmbed();
                             switch(data[x][activity].Type) {
                                 case "Skill":
-                                    const embed = new MessageEmbed();
                                     console.log("skill");
-                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
+                                    embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp {data[x][activity].Skill+"!");
+                                    //embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
                                     message.channel.send(embed);
                                     break;
                                 case "Pvm":
                                     console.log("pvm");
-                                    const embed = new MessageEmbed();
-                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
+                                    embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp {data[x][activity].Skill+" kills!");
+                                    //embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
                                     message.channel.send(embed);
                                     break;
                                 default:
-                                    const embed = new MessageEmbed();
                                     embed.setDescription(`Uhh this is not supposed to happen :(`);
                                     message.channel.send(embed);
                             }
