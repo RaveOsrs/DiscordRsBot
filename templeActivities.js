@@ -19,16 +19,12 @@ client.on('message', async message =>{
             .then(data => {
                 for (x in data) {
                     for (activity in data[x]) {
-                        console.log(data[x][activity]);
-                        console.log(data.data.Username);
                         console.log(data[x][activity].Username);
-                        console.log(data[activity].Username);
-                        console.log(data[x].Username);
+                        console.log(data[x][activity].Date);
+                        console.log(data[x][activity].Skill);
+                        console.log(data[x][activity].Xp);
+                        console.log(data[x][activity].Type);
                     }
-                    console.log("-------");
-                    console.log(data[x]);
-                    console.log(activity.skill);
-                    console.log(activity.xp);
                     /*var posted = new Date(activity.Date);
                     console.log(activity);
                     console.log(posted + " - " + anHourAgo);
