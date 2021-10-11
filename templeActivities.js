@@ -17,10 +17,12 @@ client.on('message', async message =>{
         const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                for (activity in data) {
-                    console.log();
-                    console.log(data[activity]);
+                for (x in data) {
+                    for (activity in data[x]) {
+                        console.log(data[x][activity]);
+                    }
+                    console.log("-------");
+                    console.log(data[x]);
                     console.log(activity.skill);
                     console.log(activity.xp);
                     /*var posted = new Date(activity.Date);
