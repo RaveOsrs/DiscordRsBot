@@ -18,9 +18,9 @@ client.on('message', async message =>{
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                for (activity in data.Data) {
-                    console.log(activity.date);
-                    console.log(activity.username);
+                for (activity in data) {
+                    console.log();
+                    console.log(data[activity]);
                     console.log(activity.skill);
                     console.log(activity.xp);
                     /*var posted = new Date(activity.Date);
