@@ -32,15 +32,18 @@ client.on('message', async message =>{
                             console.log(posted + " - " + anHourAgo);
                             switch(data[x][activity].Type) {
                                 case "Skill":
-                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)} in ${data[x][activity].Skill}!`);
+                                    console.log("skill");
+                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
                                     message.channel.send(embed);
                                     break;
                                 case "Pvm":
-                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)} ${data[x][activity].Skill} kills!`);
+                                    console.log("pvm");
+                                    embed.setDescription(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
                                     message.channel.send(embed);
                                     break;
                                 default:
-                                    embed.setDescription(`Uhh this is supposed to happen :(`);
+                                    embed.setDescription(`Uhh this is not supposed to happen :(`);
+                                    message.channel.send(embed);
                             }
                         }
                     }
