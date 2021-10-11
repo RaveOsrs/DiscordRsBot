@@ -28,11 +28,13 @@ client.on('message', async message =>{
                                     console.log("skill");
                                     //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+"!");
                                     channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
+                                    setTimeout(() => {  }, 30000);
                                     break;
                                 case "Pvm":
                                     console.log("pvm");
                                     //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+" kills!");
                                     channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
+                                    setTimeout(() => {  }, 30000);
                                     break;
                                 default:
                                     channel.send(`Uhh this is not supposed to happen :(`);
