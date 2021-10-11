@@ -11,48 +11,49 @@ client.on('message', async message =>{
     if (!message.channel.name == "bot-testing") return;
     if (message.author.bot) return;
 
-    const anHourAgo = new Date();
-    anHourAgo.setHours(anHourAgo.getHours() - 78);
-    try {
-        const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
-            .then(response => response.json())
-            .then(data => {
-                for (x in data) {
-                    for (activity in data[x]) {
-                        console.log(data[x][activity].Username);
-                        console.log(data[x][activity].Date);
-                        console.log(data[x][activity].Skill);
-                        console.log(data[x][activity].Xp);
-                        console.log(data[x][activity].Type);
-
-                        var posted = new Date(data[x][activity].Date);
-                        console.log(posted + " - " + anHourAgo);
-                        if (posted > anHourAgo) {
+    const minutesAgo = new Date();
+    minutesAgo.setMinutes(minutesAgo.getMinutes() - 5);
+    setInterval(() => {
+        try {
+            const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
+                .then(response => response.json())
+                .then(data => {
+                    for (x in data) {
+                        for (activity in data[x]) {
+                            console.log(data[x][activity].Username);
+                            console.log(data[x][activity].Date);
+                            console.log(data[x][activity].Skill);
+                            console.log(data[x][activity].Xp);
+                            console.log(data[x][activity].Type);
+    
+                            var posted = new Date(data[x][activity].Date);
                             console.log(posted + " - " + anHourAgo);
-                            switch(data[x][activity].Type) {
-                                case "Skill":
-                                    console.log("skill");
-                                    //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+"!");
-                                    message.channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
-                                    break;
-                                case "Pvm":
-                                    console.log("pvm");
-                                    //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+" kills!");
-                                    message.channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
-                                    break;
-                                default:
-                                    message.channel.send(`Uhh this is not supposed to happen :(`);
+                            if (posted > anHourAgo) {
+                                console.log(posted + " - " + anHourAgo);
+                                switch(data[x][activity].Type) {
+                                    case "Skill":
+                                        console.log("skill");
+                                        //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+"!");
+                                        message.channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} in ${data[x][activity].Skill}!`);
+                                        break;
+                                    case "Pvm":
+                                        console.log("pvm");
+                                        //embed.setDescription("**"+ data[x][activity].Username+"** Reached "+data[x][activity].Xp + data[x][activity].Skill+" kills!");
+                                        message.channel.send(`**${data[x][activity].Username}**, Reached ${data[x][activity].Xp} ${data[x][activity].Skill} kills!`);
+                                        break;
+                                    default:
+                                        message.channel.send(`Uhh this is not supposed to happen :(`);
+                                }
                             }
                         }
                     }
-                }
-            })
-        
-    } catch (error) {
-        message.channel.send('Oops, there was an error fetching the API');
-        console.log(error);
-    }
-
+                })
+            
+        } catch (error) {
+            message.channel.send('Oops, there was an error fetching the API');
+            console.log(error);
+        }
+    }, 300000);
 });
 
 function numberWithCommas(x) {
