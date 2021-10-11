@@ -8,7 +8,7 @@ client.once('ready', () =>{
 });
 
 client.on('message', async message =>{
-    const channel = client.channels.cache.find(channel => channel.name == "bot-testing");
+    const channel = client.channels.cache.find(channel => channel.name == "general");
     if (message.author.bot) return;
 
     const minutesAgo = new Date();
@@ -23,7 +23,7 @@ client.on('message', async message =>{
                         var posted = new Date(data[x][activity].Date);
                         console.log(posted + " - " + minutesAgo);
                         if (posted > minutesAgo) {
-                            console.log(posted + " - " + minutesAgo);
+                            console.log("Checking TempleOSRS...");
                             switch(data[x][activity].Type) {
                                 case "Skill":
                                     console.log("skill");
