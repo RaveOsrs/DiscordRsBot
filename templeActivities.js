@@ -8,11 +8,11 @@ client.once('ready', () =>{
 });
 
 client.on('message', async message =>{
-    const HOUR = 24000 * 60 *60;
     if (!message.channel.name == "bot-testing") return;
     if (message.author.bot) return;
 
-    const anHourAgo = Date.now() - HOUR;
+    const anHourAgo = new Date();
+    anHourAgo.setHours(anHourAgo.getHours() - 24);
     try {
         const file = await fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(response => response.json())
