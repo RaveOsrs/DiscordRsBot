@@ -10,21 +10,31 @@ client.once('ready', () =>{
     const minutesAgo = new Date();
     minutesAgo.setMinutes(minutesAgo.getMinutes() - 5);
     setInterval(async function() {
-        const config = {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               // Typical action to be performed when the document is ready:
+               channel.send(xhttp.responseText);
+               console.log(xhttp.responseText);
             }
-        }
-        axios
-        .get('https://secure.runescape.com/m=forum/c=W6rAQ5dpf1Y/forums?320,321,475,66231563,goto,999', config)
-        .then(function (response) {
-            const file = response.data;
-            channel.send(file);
-            console.log(file.getElementsByClassName("forum-post:last-child"));
-        })
-        .catch(function (error) {
-            channel.send("Something went wrong with the axios request.");
-        });
+        };
+        xhttp.open("GET", "https://secure.runescape.com/m=forum/c=W6rAQ5dpf1Y/forums?320,321,475,66231563,goto,999", true);
+        xhttp.send();
+
+        // const config = {
+        //     headers: {
+        //       'Content-Type': 'application/x-www-form-urlencoded'
+        //     }
+        // }
+        // axios
+        // .get('https://secure.runescape.com/m=forum/c=W6rAQ5dpf1Y/forums?320,321,475,66231563,goto,999', config)
+        // .then(function (response) {
+        //     const file = response.data;
+        //     channel.send(file);
+        // })
+        // .catch(function (error) {
+        //     channel.send("Something went wrong with the axios request.");
+        // });
     }, 1 * 60 * 1000)
 });
 
