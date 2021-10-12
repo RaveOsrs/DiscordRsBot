@@ -9,5 +9,6 @@ postrsnRequire = require('./postRsn.js');
 namechangeRequire = require("./changeName.js");
 //reactionrolesRequire = require("./reactionRoles.js");
 //templeactivitiesRequire = require("./templeActivities.js");
+forumappsRequire = require("./forumApps.js");
 
 client.login(process.env.TOKEN);
