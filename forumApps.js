@@ -19,13 +19,13 @@ client.once('ready', () =>{
         .get('https://secure.runescape.com/m=forum/c=W6rAQ5dpf1Y/forums?320,321,475,66231563,goto,999', config)
         .then(function (response) {
             const file = response.data;
-            console.log(file);
-            channel.send(response);
+            channel.send(file);
+            console.log(file.getElementsByClassName("forum-post:last-child"));
         })
         .catch(function (error) {
             channel.send("Something went wrong with the axios request.");
         });
-    }, 5 * 60 * 1000)
+    }, 1 * 60 * 1000)
 });
 
 client.login(process.env.TOKEN);
