@@ -15,7 +15,7 @@ client.on('messageCreate', message =>{
         var NickName = message.content;
         var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
         var SpecialChars = (format.test(NickName));
-        var NameChangeChannel = bot.channels.cache.find(channel => channel.name === "name-changes");
+        var NameChangeChannel = client.channels.cache.find(channel => channel.name === "name-changes");
 
         if(NickName.length > 12 || SpecialChars == true) {
             message.channel.send("This RSN doesn't exist, please type your RSN exactly how it appears in game.");
