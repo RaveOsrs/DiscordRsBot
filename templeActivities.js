@@ -3,11 +3,12 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const fetch = require('cross-fetch');
 
 client.once('ready', () =>{    
-    const channel = client.channels.cache.find(channel => channel.name == "bot-stuff");
+    const channel = client.channels.cache.find(channel => channel.name == "general");
 
-    const minutesAgo = new Date(); //current date
-    minutesAgo.setMinutes(minutesAgo.getMinutes() - 5); //5 minutes ago
     setInterval(async function() {
+        const minutesAgo = new Date(); //current date
+        minutesAgo.setMinutes(minutesAgo.getMinutes() - 5); //5 minutes ago
+
         try {
             fetch("https://templeosrs.com/api/group_achievements.php?id=1386")
             .then(response => response.json())
