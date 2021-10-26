@@ -21,19 +21,23 @@ client.once('ready', () =>{
                         **Start:** ${data.data.info.start_date}
                         **End:** ${data.data.info.end_date}`)
                     .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg');
-                let usernames = "";
-                let startEnd = "";
-                let gained = "";
-                for (let i = 0; i < 10; i++) {
-                    usernames += data.data.participants[i].username + "\n";
-                    startEnd += data.data.participants[i].start_xp + " --> " + data.data.participants[i].end_xp + "\n";
-                    gained += data.data.participants[i].xp_gained + "\n";
-                }
-                compEmbed.addFields(
-                    { name: "Username" , value: usernames, inline: true },
-                    { name: "Start / End", value: startEnd, inline: true },
-                    { name: "Gained", value: gained, inline: true },
-                )
+                    let numbers = "";
+                    let usernames = "";
+                    let gained = "";
+                    for (let i = 0; i < 10; i++) {
+                        numbers += i+1 + "\n";
+                        usernames += data.data.participants[i].username + "\n";
+                        if (data.data.participants[i].xp_gained == null) {
+                            gained += data.data.participants[i].xp_gained + "\n";
+                        } else {
+                            gained += numberWithCommas(data.data.participants[i].xp_gained) + "\n";
+                        }
+                    }
+                    compEmbed.addFields(
+                        { name: "#", value: numbers, inline: true },
+                        { name: "Username" , value: usernames, inline: true },
+                        { name: "Gained", value: gained, inline: true },
+                    )
                 .setTimestamp();
 
                 channel.bulkDelete(5)
@@ -48,7 +52,7 @@ client.once('ready', () =>{
 });
 
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 client.login(process.env.TOKEN);
