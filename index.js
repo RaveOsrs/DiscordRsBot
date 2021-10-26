@@ -10,5 +10,6 @@ namechangeRequire = require("./changeName.js");
 //reactionrolesRequire = require("./reactionRoles.js");
 templeactivitiesRequire = require("./templeActivities.js");
 //forumappsRequire = require("./forumApps.js");
+competitionRequire = require("./competition.js");
 
 client.login(process.env.TOKEN);
