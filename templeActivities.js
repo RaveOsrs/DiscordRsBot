@@ -3,7 +3,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const fetch = require('cross-fetch');
 
 client.once('ready', () =>{    
-    const channel = client.channels.cache.find(channel => channel.name == "general");
+    const channel = client.channels.cache.find(channel => channel.name == "drops-achievements");
 
     setInterval(async function() {
         const minutesAgo = new Date(); //current date
