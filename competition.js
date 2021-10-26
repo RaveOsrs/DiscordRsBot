@@ -26,8 +26,8 @@ client.once('ready', () =>{
                 let gained = "";
                 for (let i = 0; i < 10; i++) {
                     usernames += data.data.participants[i].username + "\n";
-                    startEnd += numberWithCommas(data.data.participants[i].start_xp) + " --> " + numberWithCommas(data.data.participants[i].end_xp) + "\n";
-                    gained += numberWithCommas(data.data.participants[i].xp_gained) + "\n";
+                    startEnd += data.data.participants[i].start_xp + " --> " + data.data.participants[i].end_xp + "\n";
+                    gained += data.data.participants[i].xp_gained + "\n";
                 }
                 compEmbed.addFields(
                     { name: "Username" , value: usernames, inline: true },
