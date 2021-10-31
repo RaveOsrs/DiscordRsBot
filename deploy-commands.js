@@ -1,4 +1,4 @@
-const fs = require('fs');
+/*const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { clientId, guildId } = require('./config.json');
@@ -26,4 +26,4 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 	} catch (error) {
 		console.error(error);
 	}
-})();
+})();*/
