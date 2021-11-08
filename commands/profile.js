@@ -3,9 +3,9 @@ const admin = require('firebase-admin');
 
 const DB = admin.database();
 
-const wins;
-const id;
-let rsn;
+let wins = "";
+let id = "";
+let rsn = "";
 
 module.exports = {
 	data: new SlashCommandBuilder()
