@@ -1,6 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fetch = require('cross-fetch');
 const { groupID, groupKey } = require("../config.json");
+const admin = require('firebase-admin');
+
+const DB = admin.database();
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -17,7 +20,16 @@ module.exports = {
 	async execute(interaction) {
         const rsn = interaction.options.getString('rsn');
         const user = interaction.options.getUser('user');
+        const date = new Date.now();
         try {
+            await DB.ref('users').set(user, {
+                alts: "",
+                compWins: 0,
+                joined: date,
+                progressionRank: 0,
+                referrals: 0,
+                rsn: rsn
+            });
             fetch(`https://templeosrs.com/api/add_group_member.php?`, {
                 method: 'POST',
                 headers: {
