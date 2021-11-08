@@ -13,10 +13,10 @@ client.once('ready', () =>{
     setInterval(async function() {
         try {
             DB.ref('config').once('value').then(function(snapshot) {
-                console.log("Competition ID:" + compID);
-                //compID = snapshot.val();
+                console.log("Competition ID:" + snapshot.val().currentCompId);
+                compID = snapshot.val().currentCompId;
             });
-            fetch(`https://templeosrs.com/api/competition_info.php?id=15002`)
+            fetch(`https://templeosrs.com/api/competition_info.php?id=${compID}`)
             .then(response => response.json())
             .then(data => {
                 console.log("Checking TempleOSRS comp");
