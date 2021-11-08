@@ -3,10 +3,6 @@ const admin = require('firebase-admin');
 
 const DB = admin.database();
 
-let wins = "";
-let id = "";
-let rsn = "";
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('profile')
@@ -16,15 +12,16 @@ module.exports = {
             .setDescription('User u want to check.')
             .setRequired(false)),
 	async execute(interaction) {
+        let rsn;
         if (!rsn) {
             rsn = interaction.member.displayName.toLowerCase()
         }
         rsn = interaction.options.getString('rsn');
 
         DB.ref('users/'+rsn).once('value').then(function(snapshot) {
-            wins = snapshot.val().compWins.toString();
-            id = snapshot.val().userId.id.toString();
+            const wins = snapshot.val().compWins.toString();
+            const id = snapshot.val().userId.id.toString();
+            interaction.reply(`Wins:${wins}, disc ID: ${id})`)
         })
-        .then(interaction.reply(`Wins:${wins}, disc ID: ${id})`))
 	}
 };
