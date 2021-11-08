@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('set-comp')
 		.setDescription('Set a new competition as active.')
-        .addIntOption(option =>
+        .addIntegerOption(option =>
             option.setName('id')
             .setDescription('Competition ID')
             .setRequired(true))
