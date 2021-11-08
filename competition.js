@@ -14,7 +14,7 @@ client.once('ready', () =>{
         try {
             DB.ref('config').once('value').then(function(snapshot) {
                 console.log("Competition ID:" + snapshot.val().currentCompId);
-                compID = snapshot.val().currentCompId;
+                compID = snapshot.val().currentCompId.toString();
             });
             fetch(`https://templeosrs.com/api/competition_info.php?id=${compID}`)
             .then(response => response.json())
