@@ -18,7 +18,7 @@ module.exports = {
             .setDescription('Discord of the user')
             .setRequired(true)),
 	async execute(interaction) {
-        const rsn = interaction.options.getString('rsn');
+        const rsn = interaction.options.getString('rsn').toLowerCase();
         const user = interaction.options.getUser('user');
         const date = Date.now();
         try {
@@ -37,7 +37,7 @@ module.exports = {
                 },
                 body: `id=${groupID}&key=${groupKey}&players=${rsn}`
             })
-            .then(interaction.reply(`**${rsn}**, Has been added to the TempleOSRS group!`))
+            .then(interaction.reply(`**${rsn}**, Has been added!`))
         } catch (error) {
             interaction.reply('Oops, there was an error fetching the API');
             console.log(error);
