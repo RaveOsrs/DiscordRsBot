@@ -20,7 +20,7 @@ module.exports = {
 	async execute(interaction) {
         const rsn = interaction.options.getString('rsn');
         const user = interaction.options.getUser('user');
-        const date = new Date.now();
+        const date = Date.now();
         try {
             await DB.ref('users').set(user, {
                 alts: "",
