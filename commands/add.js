@@ -22,14 +22,13 @@ module.exports = {
         const user = interaction.options.getUser('user');
         const date = Date.now();
         try {
-            await DB.ref('users').set({
+            await DB.ref('users/'+rsn).set({
                 userId: user,
                 alts: "",
                 compWins: 0,
                 joined: date,
                 progressionRank: 0,
                 referrals: 0,
-                rsn: rsn
             });
             fetch(`https://templeosrs.com/api/add_group_member.php?`, {
                 method: 'POST',
