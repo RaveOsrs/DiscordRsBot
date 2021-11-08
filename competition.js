@@ -12,7 +12,7 @@ client.once('ready', () =>{
 
     setInterval(async function() {
         try {
-            DB.ref('config').once('once').then(function(snapshot) {
+            DB.ref('config').once('value').then(function(snapshot) {
                 console.log("Competition ID:" + compID);
                 //compID = snapshot.val();
             });
