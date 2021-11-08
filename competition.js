@@ -1,9 +1,9 @@
 const {Client, Intents, MessageEmbed} = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const fetch = require('cross-fetch');
-const firebase = require('firebase-admin');
+const admin = require('firebase-admin');
 
-const DB = firebase.database();
+const DB = admin.database();
 
 let compID;
 

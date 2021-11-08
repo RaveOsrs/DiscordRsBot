@@ -3,6 +3,15 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { clientId, guildId } = require('./config.json');
 
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./firebase.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://rebornosrs-fb66f-default-rtdb.europe-west1.firebasedatabase.app"
+});
+
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 

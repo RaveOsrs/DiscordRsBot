@@ -1,16 +1,16 @@
 const fs = require("fs");
 const {Client, Collection, Intents} = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
-var firebase = require("firebase-admin");
+var admin = require("firebase-admin");
 
 var serviceAccount = require("./firebase.json");
 
-firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://rebornosrs-fb66f-default-rtdb.europe-west1.firebasedatabase.app"
 });
 
-const DB = firebase.database();
+const DB = admin.database();
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
