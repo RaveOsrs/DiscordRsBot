@@ -9,9 +9,14 @@ module.exports = {
         .addStringOption(option =>
             option.setName('rsn')
             .setDescription('RSN of the player u want to add to TempleOSRS')
+            .setRequired(true))
+        .addUserOption(option =>
+            option.setName('user')
+            .setDescription('Discord of the user')
             .setRequired(true)),
 	async execute(interaction) {
         const rsn = interaction.options.getString('rsn');
+        const user = interaction.options.getUser('user');
         try {
             fetch(`https://templeosrs.com/api/add_group_member.php?`, {
                 method: 'POST',
