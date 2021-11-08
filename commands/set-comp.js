@@ -19,7 +19,7 @@ module.exports = {
         const id = interaction.options.getInteger('id');
         const key = interaction.options.getString('key');
 
-        await DB.ref('config').update({
+        DB.ref('config').update({
             currentCompId: id,
             currentCompKey: key
         })
