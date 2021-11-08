@@ -23,6 +23,6 @@ module.exports = {
             currentCompId: id,
             currentCompKey: key
         })
-        .then(interaction.reply(`Current competition updated. (ID:${id}, Key: ${key})`)
+        .then(interaction.reply(`Current competition updated. (ID:${id}, Key: ${key})`))
 	}
 };
