@@ -1,13 +1,22 @@
 const {Client, Intents, MessageEmbed} = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const fetch = require('cross-fetch');
+const firebase = require('firebase-admin');
+
+const DB = firebase.database();
+
+let compID;
 
 client.once('ready', () =>{    
     const channel = client.channels.cache.find(channel => channel.name == "competition");
 
     setInterval(async function() {
         try {
-            fetch("https://templeosrs.com/api/competition_info.php?id=15002")
+            DB.ref('config').once('once').then(function(snapshot) {
+                console.log("Competition ID:" + compID);
+                //compID = snapshot.val();
+            });
+            fetch(`https://templeosrs.com/api/competition_info.php?id=15002`)
             .then(response => response.json())
             .then(data => {
                 console.log("Checking TempleOSRS comp");
