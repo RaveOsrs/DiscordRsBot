@@ -24,8 +24,8 @@ module.exports = {
                 const rank = snapshot.val().progressionRank.toString();
                 const wins = snapshot.val().compWins.toString();
                 const id = snapshot.val().userId.id.toString();
-                
-                if (snapshot.val().userId.avatar) let avatar = `https://cdn.discordapp.com/embed/avatars/${id}/${snapshot.val().userId.avatar.toString()}.png`;
+                const avatar;
+                if (snapshot.val().userId.avatar) avatar = `https://cdn.discordapp.com/embed/avatars/${id}/${snapshot.val().userId.avatar.toString()}.png`;
                 const noAvatar = "https://cdn.discordapp.com/embed/avatars/0.png";
 
                 let options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -33,7 +33,7 @@ module.exports = {
                 const profileEmbed = new MessageEmbed()
                     .setColor('#ffa500')
                     .setTitle(`${rsn}`)
-                    .setAuthor(`${username}#${discriminator}`, `${!avatar ? avatar : noAvatar}`)
+                    .setAuthor(`${username}#${discriminator}`, `${avatar ? avatar : noAvatar}`)
                     .setDescription(`**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
                         **Referrals:** ${referrals}
                         **Rank:** ${rank}
