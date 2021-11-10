@@ -26,7 +26,7 @@ module.exports = {
                 const id = snapshot.val().userId.id.toString();
                 const rsn = snapshot.val().rsn;
                 let avatar = "";
-                if (snapshot.val().userId.avatar) avatar = `https://cdn.discordapp.com/embed/avatars/${id}/${snapshot.val().userId.avatar.toString()}.png`;
+                if (snapshot.val().userId.avatar) avatar = `https://cdn.discordapp.com/avatars/${id}/${snapshot.val().userId.avatar.toString()}.png`;
                 const noAvatar = "https://cdn.discordapp.com/embed/avatars/0.png";
 
                 let options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -35,7 +35,8 @@ module.exports = {
                     .setColor('#ffa500')
                     .setTitle(`${rsn}`)
                     .setAuthor(`${username}#${discriminator}`, `${avatar ? avatar : noAvatar}`)
-                    .setDescription(`**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
+                    .setDescription(
+                        `**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
                         **Referrals:** ${referrals}
                         **Rank:** ${rank}
                         **Competition wins:** ${wins}`)
