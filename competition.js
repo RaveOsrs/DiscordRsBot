@@ -35,13 +35,15 @@ client.once('ready', () =>{
                     .setColor('#ffa500')
                     .setTitle(`${data.data.info.name}`)
                     .setURL(`https://templeosrs.com/competitions/standings.php?id=${data.data.info.id}`)
-                    .setDescription(`**Participants:** ${data.data.info.participant_count}
+                    .setDescription(
+                        `**Participants:** ${data.data.info.participant_count}
                         **Event type:** ${data.data.info.skill}
                         **Status:** ${data.data.info.status_text}
                         **Start:** ${data.data.info.start_date}
                         **End:** ${data.data.info.end_date}
                         
                         ${string}`)
+                    .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg')
                     .setTimestamp();
 
                 channel.bulkDelete(5)
