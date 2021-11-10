@@ -28,8 +28,11 @@ client.once('ready', async () =>{
 	const Guilds = client.guilds.cache.map((guild) => guild); //Get guild info
 	const all_fetchedCommands = await Guilds[0].commands.fetch();
 	const addCommand = all_fetchedCommands.find(command => command.name === 'add');
-	console.log(addCommand);
+	const removeCommand = all_fetchedCommands.find(command => command.name === 'remove');
+	const setCompCommand = all_fetchedCommands.find(command => command.name === 'set-comp');
 	const addCommandId = addCommand.permissions.commandId;
+	const removeCommandId = removeCommand.permissions.commandId;
+	const setCompCommandId = setCompCommand.permissions.commandId;
 
 	const fullPermissions = [
 		{
@@ -42,6 +45,38 @@ client.once('ready', async () =>{
 		},
 		{
 			id: addCommandId,
+			permissions: [{
+				id: '894156856983969822', //leader role
+				type: 'ROLE',
+				permission: true,
+			}]
+		},
+		{
+			id: removeCommandId,
+			permissions: [{
+				id: '896434353394032651', //captiain role
+				type: 'ROLE',
+				permission: true,
+			}],
+		},
+		{
+			id: removeCommandId,
+			permissions: [{
+				id: '894156856983969822', //leader role
+				type: 'ROLE',
+				permission: true,
+			}]
+		},
+		{
+			id: setCompCommandId,
+			permissions: [{
+				id: '896434353394032651', //captiain role
+				type: 'ROLE',
+				permission: true,
+			}],
+		},
+		{
+			id: setCompCommandId,
 			permissions: [{
 				id: '894156856983969822', //leader role
 				type: 'ROLE',
