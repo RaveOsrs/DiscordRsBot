@@ -24,13 +24,16 @@ module.exports = {
                 const rank = snapshot.val().progressionRank.toString();
                 const wins = snapshot.val().compWins.toString();
                 const id = snapshot.val().userId.id.toString();
-                const avatar = snapshot.val().userId.avatar.toString();
+                
+                if (snapshot.val().userId.avatar) let avatar = `https://cdn.discordapp.com/embed/avatars/${id}/${snapshot.val().userId.avatar.toString()}.png`;
+                const noAvatar = "https://cdn.discordapp.com/embed/avatars/0.png";
+
                 let options = { year: 'numeric', month: 'long', day: 'numeric' };
     
                 const profileEmbed = new MessageEmbed()
                     .setColor('#ffa500')
                     .setTitle(`${rsn}`)
-                    .setAuthor(`${username}#${discriminator}`, `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`)
+                    .setAuthor(`${username}#${discriminator}`, `${!avatar ? avatar : noAvatar}`)
                     .setDescription(`**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
                         **Referrals:** ${referrals}
                         **Rank:** ${rank}
