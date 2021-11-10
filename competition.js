@@ -24,7 +24,7 @@ client.once('ready', () =>{
                 console.log("Checking TempleOSRS comp");
                 let string = "";
                 for (let i = 0; i < 10; i++) {
-                    string += `${i+1} ${data.data.participants[i].username} - `;
+                    string += `**${data.data.participants[i].username}**: `;
                     if (data.data.participants[i].xp_gained == null) {
                         string += data.data.participants[i].xp_gained + "\n";
                     } else {
