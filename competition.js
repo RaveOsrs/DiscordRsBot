@@ -42,7 +42,6 @@ client.once('ready', () =>{
                         **End:** ${data.data.info.end_date}
                         
                         ${string}`)
-                    .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg')
                     .setTimestamp();
 
                 channel.bulkDelete(5)
