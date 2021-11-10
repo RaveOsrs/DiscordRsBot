@@ -18,7 +18,7 @@ module.exports = {
             .setDescription('Discord of the user')
             .setRequired(true)),
 	async execute(interaction) {
-        const rsn = interaction.options.getString('rsn').toLowerCase();
+        const rsn = interaction.options.getString('rsn');
         const user = interaction.options.getUser('user');
         const date = Date.now();
         try {

@@ -18,6 +18,7 @@ module.exports = {
         try {
             DB.ref('users/'+rsn).once('value').then(function(snapshot) {
                 const username = snapshot.val().userId.username;
+                const discriminator = snapshot.val().userId.discriminator;
                 const joined = new Date(snapshot.val().joined);
                 const referrals = snapshot.val().referrals.toString();
                 const rank = snapshot.val().progressionRank.toString();
@@ -28,8 +29,8 @@ module.exports = {
     
                 const profileEmbed = new MessageEmbed()
                     .setColor('#ffa500')
-                    .setTitle(`${username}`)
-                    .setThumbnail(`https://cdn.discordapp.com/avatars/${id}/${avatar}.png`)
+                    .setTitle(`${rsn}`)
+                    .setAuthor(`${username}#${discriminator}`, `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`)
                     .setDescription(`**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
                         **Referrals:** ${referrals}
                         **Rank:** ${rank}
