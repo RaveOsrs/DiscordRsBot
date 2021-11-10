@@ -9,13 +9,13 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add')
 		.setDescription('Add a player to TempleOSRS')
-        .addStringOption(option =>
-            option.setName('rsn')
-            .setDescription('RSN of the player u want to add to TempleOSRS')
-            .setRequired(true))
         .addUserOption(option =>
             option.setName('user')
             .setDescription('Discord of the user')
+            .setRequired(true))
+        .addStringOption(option =>
+            option.setName('rsn')
+            .setDescription('RSN of the player u want to add to TempleOSRS')
             .setRequired(true)),
 	async execute(interaction) {
         const rsn = interaction.options.getString('rsn');
