@@ -9,6 +9,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add')
 		.setDescription('Add a player to TempleOSRS')
+        .setDefaultPermission(false)
         .addUserOption(option =>
             option.setName('user')
             .setDescription('Discord of the user')

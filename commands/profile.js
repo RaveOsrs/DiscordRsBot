@@ -11,7 +11,7 @@ module.exports = {
         .addUserOption(option =>
             option.setName('user')
             .setDescription('User u want to check.')
-            .setRequired(true)),
+            .setRequired(true)),        
 	async execute(interaction) {
         const user = interaction.options.getUser('user');
 
