@@ -24,7 +24,7 @@ module.exports = {
                 const rank = snapshot.val().progressionRank.toString();
                 const wins = snapshot.val().compWins.toString();
                 const id = snapshot.val().userId.id.toString();
-                const avatar;
+                let avatar = "";
                 if (snapshot.val().userId.avatar) avatar = `https://cdn.discordapp.com/embed/avatars/${id}/${snapshot.val().userId.avatar.toString()}.png`;
                 const noAvatar = "https://cdn.discordapp.com/embed/avatars/0.png";
 
