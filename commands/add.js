@@ -22,8 +22,9 @@ module.exports = {
         const user = interaction.options.getUser('user');
         const date = Date.now();
         try {
-            await DB.ref('users/'+rsn).set({
+            await DB.ref('users/'+user.id).set({
                 userId: user,
+                rsn: rsn,
                 alts: "",
                 compWins: 0,
                 joined: date,

@@ -15,26 +15,32 @@ module.exports = {
 	async execute(interaction) {
         const rsn = interaction.options.getString('rsn');
 
-        DB.ref('users/'+rsn).once('value').then(function(snapshot) {
-            const username = snapshot.val().userId.username;
-            const joined = new Date(snapshot.val().joined);
-            const referrals = snapshot.val().referrals.toString();
-            const rank = snapshot.val().progressionRank.toString();
-            const wins = snapshot.val().compWins.toString();
-            const id = snapshot.val().userId.id.toString();
-            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
-            const profileEmbed = new MessageEmbed()
-                .setColor('#ffa500')
-                .setTitle(`${username}`)
-                .setDescription(`Joined: ${joined.toLocaleDateString('en-US', options)}\n
-                    Referrals: ${referrals}
-                    Rank: ${rank}
-                    Competition wins: ${wins}
-                    Discord ID: ${id}`)
-                .setTimestamp();
-
-            interaction.reply({ embeds: [profileEmbed] })
-        })
+        try {
+            DB.ref('users/'+rsn).once('value').then(function(snapshot) {
+                const username = snapshot.val().userId.username;
+                const joined = new Date(snapshot.val().joined);
+                const referrals = snapshot.val().referrals.toString();
+                const rank = snapshot.val().progressionRank.toString();
+                const wins = snapshot.val().compWins.toString();
+                const id = snapshot.val().userId.id.toString();
+                const avatar = snapshot.val().userId.avatar.toString();
+                let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    
+                const profileEmbed = new MessageEmbed()
+                    .setColor('#ffa500')
+                    .setTitle(`${username}`)
+                    .setThumbnail(`https://cdn.discordapp.com/avatars/${id}/${avatar}.png`)
+                    .setDescription(`**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
+                        **Referrals:** ${referrals}
+                        **Rank:** ${rank}
+                        **Competition wins:** ${wins}`)
+                    .setTimestamp();
+    
+                interaction.reply({ embeds: [profileEmbed] })
+            })
+        } catch (error){
+            console.log(error);
+            interaction.reply(`Couldn't find clanmate **${rsn}**`);
+        }
 	}
 };
