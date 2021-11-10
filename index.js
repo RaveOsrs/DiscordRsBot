@@ -22,7 +22,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-client.once('ready', () =>{
+client.once('ready', async () =>{
     console.log('RaveBot is online!');
 
 	const Guilds = client.guilds.cache.map((guild) => guild); //Get guild info
