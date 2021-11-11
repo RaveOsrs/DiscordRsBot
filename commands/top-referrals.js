@@ -10,7 +10,7 @@ module.exports = {
 		.setDescription('Top 10 referrals'),
 	async execute(interaction) {
         try {
-            DB.ref('users').orderByChild('referrals').limitToFirst(10).once('value').then(function(snapshot) {
+            DB.ref('users').orderByChild('referrals').limitToLast(10).once('value').then(function(snapshot) {
                 let result = "";
 
                 snapshot.forEach((childSnapshot) => {
