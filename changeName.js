@@ -3,7 +3,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const axios = require('axios').default;
 const admin = require('firebase-admin');
 const fetch = require('cross-fetch');
-const { groupID, groupKey } = require("../config.json");
+const { groupID, groupKey } = require("./config.json");
 
 const DB = admin.database();
 
