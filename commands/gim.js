@@ -23,15 +23,16 @@ module.exports = {
                 .then(data => {
                     result += `${account} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
+                .then(function() {
+                    const resultEmbed = new MessageEmbed()
+                    .setColor('#ffa500')
+                    .setTitle(`Community GIM Stats`)
+                    .setDescription(result)
+                    .setTimestamp();
+    
+                    interaction.reply({ embeds: [resultEmbed] })
+                })
             });
-            const resultEmbed = new MessageEmbed()
-                .setColor('#ffa500')
-                .setTitle(`Community GIM Stats`)
-                .setDescription(result)
-                .setTimestamp();
-
-            interaction.reply({ embeds: [resultEmbed] })
-
         } catch (error) {
             console.log(error);
             interaction.reply('Oops, Something went wrong!');
