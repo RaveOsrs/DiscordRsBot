@@ -1,7 +1,9 @@
 const {Client, Intents} = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const axios = require('axios').default;
-const config = require('./config.json');
+const admin = require('firebase-admin');
+
+const DB = admin.database();
 
 client.once('ready', () =>{
     console.log('changeName is online!');
@@ -12,6 +14,7 @@ client.on('messageCreate', message =>{
         if (message.author.bot) return; //so it doesnt reply to itself
 
         var OldName = message.member.displayName;
+        var senderId = message.author.id;
         var NickName = message.content;
         var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
         var SpecialChars = (format.test(NickName));
@@ -21,6 +24,11 @@ client.on('messageCreate', message =>{
             message.channel.send("This RSN doesn't exist, please type your RSN exactly how it appears in game.");
         }
         else{
+            DB.ref('users/'+senderId).once('value').then(function(snapshot) {
+                if (!snapshot) return;
+                DB.ref('users/'+senderId+"/rsn").set(NickName);
+            });
+            
             const params = new URLSearchParams()
             params.append('player', NickName)
   
