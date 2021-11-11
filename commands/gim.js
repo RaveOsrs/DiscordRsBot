@@ -15,13 +15,12 @@ module.exports = {
             "GIM Reborn 4",
             "GIM Reborn 5"
         ]
-        let result = "";
         try {
+            let result = "";
             for (i = 0;i < accounts.length;i++) {
                 fetch(`https://templeosrs.com/api/player_stats.php?player=${accounts[i]}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     result += `${accounts[i]} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
             }
