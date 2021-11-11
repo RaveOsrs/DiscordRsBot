@@ -21,11 +21,13 @@ module.exports = {
                 fetch(`https://templeosrs.com/api/player_stats.php?player=${account}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log("1:::: "+ data)
                     result += `${account} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
             ))
-            .then(function() {
+            .then(data => {
+                console.log("2!!!!!! "+data)
                 const resultEmbed = new MessageEmbed()
                 .setColor('#ffa500')
                 .setTitle(`Community GIM Stats`)
