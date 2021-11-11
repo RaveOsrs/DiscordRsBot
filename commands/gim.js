@@ -22,13 +22,15 @@ module.exports = {
                 .then(response => response.json())
                 .then(data => {
                     result += `${accounts[i]} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
+                    console.log("!!!!!!!!!!" + result)
                 })
             }
+            console.log(result);
             const resultEmbed = new MessageEmbed()
-            .setColor('#ffa500')
-            .setTitle(`Community GIM Stats`)
-            .setDescription(result)
-            .setTimestamp();
+                .setColor('#ffa500')
+                .setTitle(`Community GIM Stats`)
+                .setDescription(result)
+                .setTimestamp();
 
             interaction.reply({ embeds: [resultEmbed] })
 
