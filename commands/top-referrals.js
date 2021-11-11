@@ -10,11 +10,11 @@ module.exports = {
 		.setDescription('Top 10 referrals'),
 	async execute(interaction) {
         try {
-            DB.ref('users').orderByChild('referrals').limitToLast(10).once('value').then(function(snapshot) {
+            DB.ref('users').orderByChild('referrals').limitToFirst(10).once('value').then(function(snapshot) {
                 let result = "";
 
                 snapshot.forEach((childSnapshot) => {
-                    result += `**${childSnapshot.val().rsn}** - ${childSnapshot.val().referrals} referrals\n`;
+                    result = `**${childSnapshot.val().rsn}** - ${childSnapshot.val().referrals} referrals\n` + result;
                 })
     
                 const resultEmbed = new MessageEmbed()
