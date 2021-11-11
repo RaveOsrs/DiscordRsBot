@@ -21,7 +21,7 @@ module.exports = {
                 fetch(`https://templeosrs.com/api/player_stats.php?player=${account}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
-                    result += `${accounts[i]} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
+                    result += `${account} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
             });
             const resultEmbed = new MessageEmbed()
