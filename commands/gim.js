@@ -17,15 +17,13 @@ module.exports = {
         ]
         try {
             let result = "";
-            for (i = 0;i < accounts.length;i++) {
-                fetch(`https://templeosrs.com/api/player_stats.php?player=${accounts[i]}&date=${date}`)
+            accounts.forEach(function(account) {
+                fetch(`https://templeosrs.com/api/player_stats.php?player=${account}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
                     result += `${accounts[i]} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
-                    console.log("!!!!!!!!!!" + result)
                 })
-            }
-            console.log(result);
+            });
             const resultEmbed = new MessageEmbed()
                 .setColor('#ffa500')
                 .setTitle(`Community GIM Stats`)
