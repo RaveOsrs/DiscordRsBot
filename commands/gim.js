@@ -16,22 +16,36 @@ module.exports = {
             "GIM Reborn 5"
         ]
         try {
-            let result = "";
+            let result = {};
+            let string = "";
             Promise.all(accounts.map(account =>
                 fetch(`https://templeosrs.com/api/player_stats.php?player=${account}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log("1:::: "+ data)
-                    result += `${account} - **Total level:** ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
+                    result[account] = {
+                        total: data.data.Overall_level,
+                        xp: data.data.Overall
+                    }
+                    //result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
             ))
-            .then(data => {
-                console.log("2!!!!!! "+data)
+            .then(function() {
+                console.log(result);
+                var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
+                    return result[keyB].total - result[keyA].total;
+                })
+                for(var key in sortedResult) {
+                    var i = 0;
+                    if (sortedResult.hasOwnProperty(key)) {
+                        string += `**${sortedResult[i]}** - Total lvl: ${sortedResult[key].total} (Xp: ${sortedResult[key].xp})`;
+                    }
+                }
+                
                 const resultEmbed = new MessageEmbed()
                 .setColor('#ffa500')
                 .setTitle(`Community GIM Stats`)
-                .setDescription(result)
+                .setDescription(string)
                 .setTimestamp();
 
                 interaction.reply({ embeds: [resultEmbed] })
