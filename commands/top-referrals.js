@@ -14,11 +14,7 @@ module.exports = {
                 let result;
 
                 snapshot.forEach((childSnapshot) => {
-                    if (snapshot.val().referrals == 1) {
-                        result += `**${childSnapshot.val().rsn}** - ${childSnapshot.val().referrals} referral\n`;
-                    } else {
-                        result += `**${childSnapshot.val().rsn}** - ${childSnapshot.val().referrals} referrals\n`;
-                    }
+                    result += `**${childSnapshot.val().rsn}** - ${childSnapshot.val().referrals} referrals\n`;
                 })
     
                 const resultEmbed = new MessageEmbed()
