@@ -23,23 +23,24 @@ module.exports = {
                 .then(response => response.json())
                 .then(data => {
                     result[account] = {
-                        total: data.data.Overall_level,
-                        xp: data.data.Overall
+                        total: data.data.Overall_level.toString(),
+                        xp: data.data.Overall.toString()
                     }
                     //result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
             ))
             .then(function() {
-                console.log(result);
                 var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
                     return result[keyB].total - result[keyA].total;
                 })
+                console.log(sortedResult);
                 for(var key in sortedResult) {
                     var i = 0;
                     if (sortedResult.hasOwnProperty(key)) {
-                        string += `**${sortedResult[i]}** - Total lvl: ${sortedResult[key].total} (Xp: ${sortedResult[key].xp})`;
+                        string += `**${sortedResult[i]}** - Total lvl: ${sortedResult[key][total]} (Xp: ${sortedResult[key].xp})\n`;
                     }
+                    i++;
                 }
                 
                 const resultEmbed = new MessageEmbed()
