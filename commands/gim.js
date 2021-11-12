@@ -32,9 +32,9 @@ module.exports = {
             ))
             .then(function() {
                 var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
-                    return result[keyB].total - result[keyA].total;
+                    return result[keyA].total - result[keyB].total;
                 })
-                console.log(sortedResult);
+                console.log("sorted"+sortedResult);
                 for(var key in sortedResult) {
                     var i = 0;
                     if (sortedResult.hasOwnProperty(key)) {
