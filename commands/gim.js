@@ -34,11 +34,11 @@ module.exports = {
                 var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
                     return result[keyA].total - result[keyB].total;
                 })
-                console.log("sorted"+sortedResult);
+                console.log("!!"+result);
                 for(var key in result) {
                     var i = 0;
                     if (result.hasOwnProperty(key)) {
-                        string += `**${result[i]}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})\n`;
+                        string += `**${result[key]}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})\n`;
                     }
                     i++;
                 }
