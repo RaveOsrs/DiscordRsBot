@@ -35,10 +35,10 @@ module.exports = {
                     return result[keyA].total - result[keyB].total;
                 })
                 console.log("sorted"+sortedResult);
-                for(var key in sortedResult) {
+                for(var key in result) {
                     var i = 0;
-                    if (sortedResult.hasOwnProperty(key)) {
-                        string += `**${sortedResult[i]}** - Total lvl: ${sortedResult[key][total]} (Xp: ${sortedResult[key].xp})\n`;
+                    if (result.hasOwnProperty(key)) {
+                        string += `**${result[i]}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})\n`;
                     }
                     i++;
                 }
