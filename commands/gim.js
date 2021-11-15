@@ -39,12 +39,13 @@ module.exports = {
                     return result[keyB].total - result[keyA].total;
                 })
                 console.log(sortedResult);
-                for(var key in result) {
+                sortedResult.forEach(player => string += `**${result[player].rsn}** - Total lvl: ${numberWithCommas(result[player].total)} (Xp: ${numberWithCommas(result[player].xp)})\n`);
+                /*for(var key in result) {
                     var i = 0;
                     if (result.hasOwnProperty(key)) {
-                        string += `**${result[key].rsn}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})\n`;
+                        string += `**${result[key].rsn}** - Total lvl: ${numberWithCommas(result[key].total)} (Xp: ${numberWithCommas(result[key].xp)})\n`;
                     }
-                }
+                }*/
                 
                 const resultEmbed = new MessageEmbed()
                 .setColor('#ffa500')
@@ -61,3 +62,7 @@ module.exports = {
         }
 	}
 };
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
