@@ -44,7 +44,7 @@ module.exports = {
                 console.log(data);
                 let string = "";
                 for (let i = 0; i < 10; i++) {
-                    string += `**${data.data.players[i].username}**: `;
+                    string += `**${data.data.players["1"].username}**: `;
                     string += numberWithCommas(data.data.players[i].xp) + "\n";
                 }
                 const resultEmbed = new MessageEmbed()
