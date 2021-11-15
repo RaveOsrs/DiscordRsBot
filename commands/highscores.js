@@ -36,7 +36,7 @@ module.exports = {
             .addChoice('Hunter', 'hunter')
             .addChoice('Construction', 'construction')),
 	async execute(interaction) {
-        const category = interaction.option.getString('category');
+        const category = interaction.options.getString('category');
         try {
             fetch(`https://templeosrs.com/api/skill_hiscores.php?group=${groupID}&skill=${category}&count=10`)
             .then(response => response.json())
