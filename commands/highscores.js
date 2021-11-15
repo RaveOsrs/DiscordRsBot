@@ -58,7 +58,7 @@ module.exports = {
             .addChoice('Chaos Fanatic', 'chaosfanatic')
             .addChoice('Crazy Archaeologist', 'crazyarchaeologist')
             .addChoice('Obor', 'obor')
-            .addChoice('Deranged Archaeologist', 'derangedarchaeologist')
+            .addChoice('Deranged Archaeologist', 'derangedarchaeologist'))
         .addStringOption(option =>
             option.setName('boss')
             .setDescription('Choose a boss category')
