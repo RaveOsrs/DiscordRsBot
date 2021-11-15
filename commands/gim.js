@@ -22,11 +22,11 @@ module.exports = {
                 fetch(`https://templeosrs.com/api/player_stats.php?player=${account}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
-                    result[account] = {
+                    /*result[account] = {
                         total: data.data.Overall_level,
                         xp: data.data.Overall
-                    }
-                    //result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
+                    }*/
+                    result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
             ))
