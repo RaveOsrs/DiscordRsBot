@@ -126,10 +126,11 @@ module.exports = {
                         string += numberWithCommas(data.data.players[key].xp) + "\n";
                     }
                 }
+                let trimmed = data.data.skill.trim();
                 const resultEmbed = new MessageEmbed()
                     .setColor('#ffa500')
                     .setTitle(`${data.data.skill} highscores`)
-                    .setURL(`https://templeosrs.com/hiscores/skills.php?skill=${data.data.skill.trim()}&group=${groupID}`)
+                    .setURL(`https://templeosrs.com/hiscores/skills.php?skill=${trimmed}&group=${groupID}`)
                     .setDescription(string)
                     .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg')
                     .setTimestamp();
