@@ -24,10 +24,11 @@ module.exports = {
                 .then(data => obj = data)
                 .then(data => {
                     result[account] = {
+                        rsn: account,
                         total: data.data.Overall_level,
                         xp: data.data.Overall
                     }
-                    console.log(result.json());
+                    console.log();
                     //result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
@@ -37,10 +38,11 @@ module.exports = {
                 var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
                     return result[keyB].total - result[keyA].total;
                 })
+                console.log(sortedResult);
                 for(var key in result) {
                     var i = 0;
                     if (result.hasOwnProperty(key)) {
-                        string += `**${result[i]}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})`;
+                        string += `**${result[key].rsn}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})\n`;
                     }
                 }
                 
