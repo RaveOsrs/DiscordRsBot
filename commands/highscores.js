@@ -110,10 +110,11 @@ module.exports = {
         const misc = interaction.options.getString('misc');
         const boss = interaction.options.getString('boss');
         const boss2 = interaction.options.getString('boss2');
-        if (skill) const category = skill;
-        if (misc) const category = misc;
-        if (boss) const category = boss;
-        if (boss2) const category = boss2;
+        const category = "";
+        if (skill) category = skill;
+        if (misc) category = misc;
+        if (boss) category = boss;
+        if (boss2) category = boss2;
         try {
             fetch(`https://templeosrs.com/api/skill_hiscores.php?group=${groupID}&skill=${category}&count=10`)
             .then(response => response.json())
