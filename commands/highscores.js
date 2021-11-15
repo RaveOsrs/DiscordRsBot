@@ -51,7 +51,7 @@ module.exports = {
             .addChoice('Bounty Hunter - Rogue', 'bhr')
             .addChoice('Soul Wars Zeal', 'zeal')
             .addChoice('Tempoross', 'tempoross')
-            .addChoice('Mimic', 'mimic'))
+            .addChoice('Mimic', 'mimic')
             .addChoice('Barrows', 'barrows')
             .addChoice('Bryophyta', 'bryophyta')
             .addChoice('Chaos Elemental', 'chaoselemental')
