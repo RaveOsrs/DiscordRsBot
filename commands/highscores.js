@@ -45,7 +45,7 @@ module.exports = {
                 let string = "";
                 for (let i = 0; i < 10; i++) {
                     string += `**${data.data.players["1"].username}**: `;
-                    string += numberWithCommas(data.data.players[i].xp) + "\n";
+                    string += numberWithCommas(data.data.players["1"].xp) + "\n";
                 }
                 const resultEmbed = new MessageEmbed()
                     .setColor('#ffa500')
