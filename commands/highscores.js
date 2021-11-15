@@ -126,7 +126,7 @@ module.exports = {
                         string += numberWithCommas(data.data.players[key].xp) + "\n";
                     }
                 }
-                let trimmed = data.data.skill.trim();
+                let trimmed = data.data.skill.replace(/ /g, '%20');
                 const resultEmbed = new MessageEmbed()
                     .setColor('#ffa500')
                     .setTitle(`${data.data.skill} highscores`)
