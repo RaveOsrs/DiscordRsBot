@@ -22,25 +22,24 @@ module.exports = {
                 fetch(`https://templeosrs.com/api/player_stats.php?player=${account}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
-                    result[account] = {
-                        total: data.data.Overall_level.toString(),
-                        xp: data.data.Overall.toString()
+                    result = [account] {
+                        total: data.data.Overall_level,
+                        xp: data.data.Overall
                     }
                     //result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
             ))
             .then(function() {
+                console.log(result);
                 var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
-                    return result[keyA].total - result[keyB].total;
+                    return result[keyB].total - result[keyA].total;
                 })
-                console.log("!!"+result);
                 for(var key in result) {
                     var i = 0;
                     if (result.hasOwnProperty(key)) {
-                        string += `**${result[key]}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})\n`;
+                        string += `**${result[i]}** - Total lvl: ${result[key].total} (Xp: ${result[key].xp})`;
                     }
-                    i++;
                 }
                 
                 const resultEmbed = new MessageEmbed()
