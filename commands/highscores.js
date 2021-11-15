@@ -51,14 +51,7 @@ module.exports = {
                     .setColor('#ffa500')
                     .setTitle(`${data.data.skill} highscores`)
                     .setURL(`https://templeosrs.com/hiscores/skills.php?skill=${data.data.skill}&group=${groupID}`)
-                    .setDescription(
-                        `**Participants:** ${data.data.info.participant_count}
-                        **Event type:** ${data.data.info.skill}
-                        **Status:** ${data.data.info.status_text}
-                        **Start:** ${data.data.info.start_date}
-                        **End:** ${data.data.info.end_date}
-                        
-                        ${string}`)
+                    .setDescription(string)
                     .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg')
                     .setTimestamp();
                 
