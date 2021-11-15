@@ -28,24 +28,14 @@ module.exports = {
                         total: data.data.Overall_level,
                         xp: data.data.Overall
                     }
-                    console.log();
-                    //result += `**${account}** - Total level: ${data.data.Overall_level} (Xp: ${data.data.Overall})\n`;
                 })
                 .catch(error => console.log(error))
             ))
             .then(function() {
-                console.log(result);
                 var sortedResult = Object.keys(result).sort(function(keyA, keyB) {
                     return result[keyB].total - result[keyA].total;
                 })
-                console.log(sortedResult);
                 sortedResult.forEach(player => string += `**${result[player].rsn}** - Total lvl: ${numberWithCommas(result[player].total)} (Xp: ${numberWithCommas(result[player].xp)})\n`);
-                /*for(var key in result) {
-                    var i = 0;
-                    if (result.hasOwnProperty(key)) {
-                        string += `**${result[key].rsn}** - Total lvl: ${numberWithCommas(result[key].total)} (Xp: ${numberWithCommas(result[key].xp)})\n`;
-                    }
-                }*/
                 
                 const resultEmbed = new MessageEmbed()
                 .setColor('#ffa500')
