@@ -8,9 +8,9 @@ module.exports = {
 		.setName('highscores')
 		.setDescription('Show highscores of a specific category.')
         .addStringOption(option =>
-            option.setName('category')
-            .setDescription('Choose a category')
-            .setRequired(true)
+            option.setName('skill')
+            .setDescription('Choose skill category')
+            .setRequired(false)
             .addChoice('Overall', 'overall')
             .addChoice('Attack', 'attack')
             .addChoice('Defence', 'defence')
@@ -34,7 +34,11 @@ module.exports = {
             .addChoice('Farming', 'farming')
             .addChoice('Runecrafting', 'runecraft')
             .addChoice('Hunter', 'hunter')
-            .addChoice('Construction', 'construction')
+            .addChoice('Construction', 'construction'))
+        .addStringOption(option =>
+            option.setName('misc')
+            .setDescription('Choose a misc category')
+            .setRequired(false)
             .addChoice('All Clues', 'clueall')
             .addChoice('Beginner Clues', 'cluebeginner')
             .addChoice('Easy Clues', 'clueeasy')
@@ -43,23 +47,33 @@ module.exports = {
             .addChoice('Elite Clues', 'clueelite')
             .addChoice('Master Clues', 'cluemaster')
             .addChoice('Last man standing', 'lms')
-            .addChoice('Abyssal Sire', 'sire')
-            .addChoice('Alchemical Hydra', 'hydra')
+            .addChoice('Bounty Hunter - Hunter', 'bhh')
+            .addChoice('Bounty Hunter - Rogue', 'bhr')
+            .addChoice('Soul Wars Zeal', 'zeal')
+            .addChoice('Tempoross', 'tempoross')
+            .addChoice('Mimic', 'mimic'))
             .addChoice('Barrows', 'barrows')
             .addChoice('Bryophyta', 'bryophyta')
+            .addChoice('Chaos Elemental', 'chaoselemental')
+            .addChoice('Chaos Fanatic', 'chaosfanatic')
+            .addChoice('Crazy Archaeologist', 'crazyarchaeologist')
+            .addChoice('Obor', 'obor')
+            .addChoice('Deranged Archaeologist', 'derangedarchaeologist')
+        .addStringOption(option =>
+            option.setName('boss')
+            .setDescription('Choose a boss category')
+            .setRequired(false)
+            .addChoice('Abyssal Sire', 'sire')
+            .addChoice('Alchemical Hydra', 'hydra')
             .addChoice('Callisto', 'callisto')
             .addChoice('Cerberus', 'cerberus')
             .addChoice('Chambers of Xeric', 'cox')
             .addChoice('Chambers of Xeric Challange mode', 'coxcm')
-            .addChoice('Chaos Elemental', 'chaoselemental')
-            .addChoice('Chaos Fanatic', 'chaosfanatic')
             .addChoice('Commander Zilyana', 'commanderzilyana')
             .addChoice('Corporeal Beast', 'corporealbeast')
-            .addChoice('Crazy Archaeologist', 'crazyarchaeologist')
             .addChoice('Dagannoth Prime', 'prime')
             .addChoice('Dagannoth Rex', 'rexbro')
             .addChoice('Dagannoth Supreme', 'supreme')
-            .addChoice('Deranged Archaeologist', 'derangedarchaeologist')
             .addChoice('General Graardor', 'generalgraardor')
             .addChoice('Giant Mole', 'giantmole')
             .addChoice('Grotesque Guardians', 'grotesqueguardians')
@@ -67,10 +81,12 @@ module.exports = {
             .addChoice('Kalphite Queen', 'kq')
             .addChoice('King Black Dragon', 'kbd')
             .addChoice('Kraken', 'kraken')
-            .addChoice('Kree Arra', 'kreearra')
+            .addChoice('Kree Arra', 'kreearra'))
+        .addStringOption(option =>
+            option.setName('boss2')
+            .setDescription('Choose a boss category')
+            .setRequired(false)
             .addChoice('Krill Tsutsaroth', 'kriltsutsaroth')
-            .addChoice('Mimic', 'mimic')
-            .addChoice('Obor', 'obor')
             .addChoice('Sarachnis', 'sarachnis')
             .addChoice('Scorpia', 'scorpia')
             .addChoice('Skotizo', 'skotizo')
@@ -87,14 +103,17 @@ module.exports = {
             .addChoice('Zalcano', 'zalcano')
             .addChoice('Zulrah', 'zulrah')
             .addChoice('Nightmare', 'nightmare')
-            .addChoice('Soul Wars Zeal', 'zeal')
-            .addChoice('Tempoross', 'tempoross')
             .addChoice('Theatre of Blood Hard Mode', 'tobcm')
-            .addChoice('Bounty Hunter - Hunter', 'bhh')
-            .addChoice('Bounty Hunter - Rogue', 'bhr')
             .addChoice('Phosanis Nightmare', 'phosanis')),
 	async execute(interaction) {
-        const category = interaction.options.getString('category');
+        const skill = interaction.options.getString('skill');
+        const misc = interaction.options.getString('misc');
+        const boss = interaction.options.getString('boss');
+        const boss2 = interaction.options.getString('boss2');
+        if (skill) const category = skill;
+        if (misc) const category = misc;
+        if (boss) const category = boss;
+        if (boss2) const category = boss2;
         try {
             fetch(`https://templeosrs.com/api/skill_hiscores.php?group=${groupID}&skill=${category}&count=10`)
             .then(response => response.json())
