@@ -43,11 +43,18 @@ module.exports = {
             .then(data => {
                 console.log(data);
                 let string = "";
-                for (let i = 0; i < 10; i++) {
-                    objString = ""+ i + 1;
-                    string += `**${data.data.players[objString].username}**: `;
-                    string += numberWithCommas(data.data.players[i.toString()].xp) + "\n";
+                for (var key in data.data.players) {
+                    if (data.data.players.hasOwnProperty(key)) {
+                        string += `**${data.data.players[key].username}**: `;
+                        string += numberWithCommas(data.data.players[key].xp) + "\n";
+                    }
                 }
+                /*for (let i = 0; i < 10; i++) {
+                    objString = ""+ i + 1;
+                    console.log(objString);
+                    string += `**${data.data.players[].username}**: `;
+                    string += numberWithCommas(data.data.players[i.toString()].xp) + "\n";
+                }*/
                 const resultEmbed = new MessageEmbed()
                     .setColor('#ffa500')
                     .setTitle(`${data.data.skill} highscores`)
