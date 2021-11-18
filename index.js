@@ -30,9 +30,11 @@ client.once('ready', async () =>{
 	const addCommand = all_fetchedCommands.find(command => command.name === 'add');
 	const removeCommand = all_fetchedCommands.find(command => command.name === 'remove');
 	const setCompCommand = all_fetchedCommands.find(command => command.name === 'set-comp');
+	const addReferralCommand = all_fetchedCommands.find(command => command.name === 'add-referral');
 	const addCommandId = addCommand.permissions.commandId;
 	const removeCommandId = removeCommand.permissions.commandId;
 	const setCompCommandId = setCompCommand.permissions.commandId;
+	const addReferralCommandId = addReferralCommand.permissions.commandId;
 
 	const fullPermissions = [
 		{
@@ -77,6 +79,22 @@ client.once('ready', async () =>{
 		},
 		{
 			id: setCompCommandId,
+			permissions: [{
+				id: '894156856983969822', //leader role
+				type: 'ROLE',
+				permission: true,
+			}]
+		},
+		{
+			id: addReferralCommandId,
+			permissions: [{
+				id: '896434353394032651', //captiain role
+				type: 'ROLE',
+				permission: true,
+			}],
+		},
+		{
+			id: addReferralCommandId,
 			permissions: [{
 				id: '894156856983969822', //leader role
 				type: 'ROLE',
