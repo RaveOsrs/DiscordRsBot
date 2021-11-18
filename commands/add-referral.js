@@ -6,7 +6,7 @@ const DB = admin.database();
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add-referral')
-		.setDescription('Person that referred someone.')
+		.setDescription('Add referral to user.')
         .setDefaultPermission(false)
         .addUserOption(option =>
             option.setName('user')
@@ -22,7 +22,7 @@ module.exports = {
                 rsn = snapshot.val().rsn;
             });
             DB.ref('users/'+user.id+"/referrals").set(referrals + 1);
-            interaction.reply(`Referral added for **${rsn}**! New referral amount: ${referrals + 1}`)
+            interaction.reply(`Referral added for **${rsn}**! New referral count: ${referrals + 1}`)
         } catch (error) {
             interaction.reply('Oops, there was an error fetching the API');
             console.log(error);
