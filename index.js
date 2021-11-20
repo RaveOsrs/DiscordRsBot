@@ -36,6 +36,9 @@ client.once('ready', async () =>{
 	const setCompCommandId = setCompCommand.permissions.commandId;
 	const addReferralCommandId = addReferralCommand.permissions.commandId;
 
+	console.log(`Add: ${addCommand} id ${addCommandId}`);
+	console.log(`Add: ${addReferralCommand} id ${addReferralCommandId}`);
+
 	const fullPermissions = [
 		{
 			id: addCommandId,
@@ -43,7 +46,7 @@ client.once('ready', async () =>{
 				id: '896434353394032651', //captiain role
 				type: 'ROLE',
 				permission: true,
-			}],
+			}]
 		},
 		{
 			id: addCommandId,
@@ -59,7 +62,7 @@ client.once('ready', async () =>{
 				id: '896434353394032651', //captiain role
 				type: 'ROLE',
 				permission: true,
-			}],
+			}]
 		},
 		{
 			id: removeCommandId,
@@ -75,7 +78,7 @@ client.once('ready', async () =>{
 				id: '896434353394032651', //captiain role
 				type: 'ROLE',
 				permission: true,
-			}],
+			}]
 		},
 		{
 			id: setCompCommandId,
@@ -91,7 +94,7 @@ client.once('ready', async () =>{
 				id: '896434353394032651', //captiain role
 				type: 'ROLE',
 				permission: true,
-			}],
+			}]
 		},
 		{
 			id: addReferralCommandId,
