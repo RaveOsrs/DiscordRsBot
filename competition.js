@@ -13,11 +13,9 @@ client.once('ready', () =>{
     setInterval(async function() {
         try {
             await DB.ref('config').once('value').then(function(snapshot) {
-                console.log("Competition ID:" + snapshot.val().currentCompId);
                 compID = snapshot.val().currentCompId.toString();
             });
             var url = `https://templeosrs.com/api/competition_info.php?id=${compID}`;
-            console.log(url);
             fetch(url)
             .then(response => response.json())
             .then(data => {

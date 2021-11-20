@@ -25,7 +25,7 @@ module.exports = {
         try {
             await DB.ref('users/'+user.id).once('value').then(function(snapshot) {
                 if (!snapshot.exists()) {
-                    await DB.ref('users/'+user.id).set({
+                    DB.ref('users/'+user.id).set({
                         userId: user,
                         rsn: rsn,
                         alts: "",
