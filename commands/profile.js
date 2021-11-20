@@ -10,7 +10,7 @@ module.exports = {
 		.setDescription('Lookup a profile')
         .addUserOption(option =>
             option.setName('user')
-            .setDescription('User u want to check.')
+            .setDescription('Discord of the user u want to check.')
             .setRequired(true)),        
 	async execute(interaction) {
         const user = interaction.options.getUser('user');

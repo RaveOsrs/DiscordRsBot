@@ -37,19 +37,19 @@ client.on('messageCreate', message =>{
   
             axios
             .post('https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws', params, config)
-            .then(function (response) {
-                DB.ref('users/'+senderId).once('value').then(function(snapshot) {
-                    if (!snapshot) return;
+            .then(async function (response) {
+                await DB.ref('users/'+senderId).once('value').then(function(snapshot) {
+                    if (!snapshot.exists()) return;
                     DB.ref('users/'+senderId+"/rsn").set(NickName); //change name in database
                 });
-                fetch(`https://templeosrs.com/api/remove_group_member.php?`, { //remove old name from templeosrs
+                await fetch(`https://templeosrs.com/api/remove_group_member.php?`, { //remove old name from templeosrs
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: `id=${groupID}&key=${groupKey}&players=${OldName}`
                 })
-                fetch(`https://templeosrs.com/api/add_group_member.php?`, { //add new name to templeosrs
+                await fetch(`https://templeosrs.com/api/add_group_member.php?`, { //add new name to templeosrs
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -60,6 +60,7 @@ client.on('messageCreate', message =>{
                 NameChangeChannel.send('Name changed from **' + OldName + '** to **' + NickName + '**');
             })
             .catch(function (error) {
+                console.log(error);
                 message.channel.send("Player **" + NickName + "** doesn't exist, please type your RSN exactly how it appears in game.");
             });
         }

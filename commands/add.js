@@ -8,7 +8,7 @@ const DB = admin.database();
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add')
-		.setDescription('Add a player to TempleOSRS')
+		.setDescription('Add a player to the clan.')
         .setDefaultPermission(false)
         .addUserOption(option =>
             option.setName('user')
@@ -16,21 +16,25 @@ module.exports = {
             .setRequired(true))
         .addStringOption(option =>
             option.setName('rsn')
-            .setDescription('RSN of the player u want to add to TempleOSRS')
+            .setDescription('RSN')
             .setRequired(true)),
 	async execute(interaction) {
         const rsn = interaction.options.getString('rsn');
         const user = interaction.options.getUser('user');
         const date = Date.now();
         try {
-            await DB.ref('users/'+user.id).set({
-                userId: user,
-                rsn: rsn,
-                alts: "",
-                compWins: 0,
-                joined: date,
-                progressionRank: 0,
-                referrals: 0,
+            await DB.ref('users/'+user.id).once('value').then(function(snapshot) {
+                if (!snapshot.exists()) {
+                    await DB.ref('users/'+user.id).set({
+                        userId: user,
+                        rsn: rsn,
+                        alts: "",
+                        compWins: 0,
+                        joined: date,
+                        progressionRank: 0,
+                        referrals: 0,
+                    });
+                }
             });
             fetch(`https://templeosrs.com/api/add_group_member.php?`, {
                 method: 'POST',
