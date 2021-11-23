@@ -20,28 +20,27 @@ module.exports = {
 	async execute(interaction) {
         const id = interaction.options.getInteger('id');
         const key = interaction.options.getString('key');
-        var name;
 
         try {
             fetch(`https://templeosrs.com/api/competition_info.php?id=${id}`)
             .then(response => response.json())
             .then(data => {
                 if(data.data.info.name) {
-                    name = data.data.info.name;
+                    await DB.ref('competitions/'+id).once('value').then(function(snapshot) {
+                        if (!snapshot.exists()) {
+                            DB.ref('competitions/'+id).set({
+                                id: id,
+                                key: key,
+                                name: data.data.info.name,
+                            });
+                        }
+                    });
                 } else {
                     interaction.reply(`Cant find competition with id: ${id}`);
                     return;
                 }
-            });
-            await DB.ref('competitions/'+id).once('value').then(function(snapshot) {
-                if (!snapshot.exists()) {
-                    DB.ref('competitions/'+id).set({
-                        id: id,
-                        key: key,
-                        name: name,
-                    });
-                }
-            });
+            })
+            .then(interaction.reply(`${data.data.info.name} has been added.`))
             
         } catch (error) {
             interaction.reply('Oops, there was an error fetching the API');
