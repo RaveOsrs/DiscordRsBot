@@ -38,8 +38,8 @@ client.once('ready', async () =>{
 	const addReferralCommandId = addReferralCommand.permissions.commandId;
 	const addCompCommandId = addCompCommand.permissions.commandId;
 
-	console.log(`Add: ${addCommand} id ${addCommandId}`);
-	console.log(`Add: ${addReferralCommand} id ${addReferralCommandId}`);
+	console.log(addCommand);
+	console.log(addReferralCommand);
 
 	const fullPermissions = [
 		{
