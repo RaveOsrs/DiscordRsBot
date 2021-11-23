@@ -26,7 +26,7 @@ module.exports = {
             .then(response => response.json())
             .then(data => {
                 if(data.data.info.name) {
-                    await DB.ref('competitions/'+id).once('value').then(function(snapshot) {
+                    DB.ref('competitions/'+id).once('value').then(function(snapshot) {
                         if (!snapshot.exists()) {
                             DB.ref('competitions/'+id).set({
                                 id: id,
