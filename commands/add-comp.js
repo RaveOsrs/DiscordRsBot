@@ -35,12 +35,13 @@ module.exports = {
                             });
                         }
                     });
+
+                    interaction.reply(`${data.data.info.name} has been added.`)
                 } else {
                     interaction.reply(`Cant find competition with id: ${id}`);
                     return;
                 }
             })
-            .then(interaction.reply(`${data.data.info.name} has been added.`))
             
         } catch (error) {
             interaction.reply('Oops, there was an error fetching the API');
