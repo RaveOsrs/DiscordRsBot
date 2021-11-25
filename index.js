@@ -32,7 +32,7 @@ client.once('ready', async () =>{
 	const setCompCommand = all_fetchedCommands.find(command => command.name === 'set-comp');
 	const addReferralCommand = all_fetchedCommands.find(command => command.name === 'add-referral');
 	const addCompCommand = all_fetchedCommands.find(command => command.name === 'add-comp');
-	const addUserCommandId = addCommand.permissions.commandId;
+	const addUserCommandId = addUserCommand.permissions.commandId;
 	const removeCommandId = removeCommand.permissions.commandId;
 	const setCompCommandId = setCompCommand.permissions.commandId;
 	const addReferralCommandId = addReferralCommand.permissions.commandId;
