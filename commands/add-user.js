@@ -7,8 +7,8 @@ const DB = admin.database();
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('add')
-		.setDescription('Add a player to the clan.')
+		.setName('add-user')
+		.setDescription('Add a user to the clan.')
         .setDefaultPermission(false)
         .addUserOption(option =>
             option.setName('user')
