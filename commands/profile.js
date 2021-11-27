@@ -36,7 +36,7 @@ module.exports = {
                     .setTitle(`${rsn}`)
                     .setAuthor(`${username}#${discriminator}`, `${avatar ? avatar : noAvatar}`)
                     .setDescription(
-                        `**Joined:** ${joined.toLocaleDateString('en-US', options)}\n
+                        `**Joined:** <t:${joined}>\n
                         **Referrals:** ${referrals}
                         **Rank:** ${rank}
                         **Competition wins:** ${wins}`)
