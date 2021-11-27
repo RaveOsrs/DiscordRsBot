@@ -35,10 +35,10 @@ client.once('ready', () =>{
                 let times = "";
                 switch(data.data.info.status_text) {
                     case "Upcoming":
-                        times = `Starting in <t:${start}:R>`;
+                        times = `Starting <t:${start}:R>`;
                         break;
                     case "In progress" || "Finished":
-                        times = `Ending in <t:${end}:R>`;
+                        times = `Ending <t:${end}:R>`;
                         break;
                 }
                 const compEmbed = new MessageEmbed()
