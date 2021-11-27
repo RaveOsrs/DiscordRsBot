@@ -6,7 +6,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('remove')
 		.setDescription('Remove a player from TempleOSRS')
-        .setDefaultPermission(false)
+        //.setDefaultPermission(false)
         .addStringOption(option =>
             option.setName('rsn')
             .setDescription('RSN of the player u want to remove from TempleOSRS')

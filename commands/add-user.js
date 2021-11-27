@@ -9,7 +9,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add-user')
 		.setDescription('Add a user to the clan.')
-        .setDefaultPermission(false)
+        //.setDefaultPermission(false)
         .addUserOption(option =>
             option.setName('user')
             .setDescription('Discord of the user')

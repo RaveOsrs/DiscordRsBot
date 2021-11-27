@@ -8,7 +8,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add-comp')
 		.setDescription('Add a competition.')
-        .setDefaultPermission(false)
+        //.setDefaultPermission(false)
         .addIntegerOption(option =>
             option.setName('id')
             .setDescription('Competition ID')

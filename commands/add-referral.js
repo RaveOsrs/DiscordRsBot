@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add-referral')
 		.setDescription('Add referral to user.')
-        .setDefaultPermission(false)
+        //.setDefaultPermission(false)
         .addUserOption(option =>
             option.setName('user')
             .setDescription('Discord of the user')

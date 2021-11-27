@@ -25,7 +25,7 @@ for (const file of commandFiles) {
 client.once('ready', async () =>{
     console.log('RaveBot is online!');
 
-	const Guilds = client.guilds.cache.map((guild) => guild); //Get guild info
+	/*const Guilds = client.guilds.cache.map((guild) => guild); //Get guild info
 	const all_fetchedCommands = await Guilds[0].commands.fetch();
 	const addUserCommand = all_fetchedCommands.find(command => command.name === 'add-user');
 	const removeCommand = all_fetchedCommands.find(command => command.name === 'remove');
@@ -121,7 +121,7 @@ client.once('ready', async () =>{
 		}
 	];
 
-	await Guilds[0].commands.permissions.set({ fullPermissions });
+	await Guilds[0].commands.permissions.set({ fullPermissions });*/
 });
 
 client.on('interactionCreate', async interaction => {
