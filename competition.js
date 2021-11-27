@@ -20,11 +20,9 @@ client.once('ready', () =>{
             .then(response => response.json())
             .then(data => {
                 console.log("Checking TempleOSRS comp");
-                const start = new Date(data.data.info.start_date).getTime();
-                const end = new Date(data.data.info.end_date).getTime();
+                const start = new Date(data.data.info.start_date).getTime().toString().slice(0,-3);
+                const end = new Date(data.data.info.end_date).getTime().toString().slice(0,-3);
 
-                console.log(start);
-                console.log(end);
                 let string = "";
                 for (let i = 0; i < 10; i++) {
                     string += `**${data.data.participants[i].username}**: `;
