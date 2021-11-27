@@ -19,7 +19,7 @@ module.exports = {
             DB.ref('users/'+user.id).once('value').then(function(snapshot) {
                 const username = snapshot.val().userId.username;
                 const discriminator = snapshot.val().userId.discriminator;
-                const joined = new Date(snapshot.val().joined);
+                const joined = snapshot.val().joined;
                 const referrals = snapshot.val().referrals.toString();
                 const rank = snapshot.val().progressionRank.toString();
                 const wins = snapshot.val().compWins.toString();
