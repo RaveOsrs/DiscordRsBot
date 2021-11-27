@@ -29,6 +29,15 @@ client.once('ready', () =>{
                         string += "\`" + numberWithCommas(data.data.participants[i].xp_gained) + "\`\n";
                     }
                 }
+                let times = "";
+                switch(data.data.info.status_text) {
+                    case "Upcoming":
+                        times = `Starting in <t:${new Date(data.data.info.start_date).getTime()}:R>`;
+                        break;
+                    case "In progress" || "Finished":
+                        times = `Ending in <t:${new Date(data.data.info.end_date).getTime()}:R>`;
+                        break;
+                }
                 const compEmbed = new MessageEmbed()
                     .setColor('#ffa500')
                     .setTitle(`${data.data.info.name}`)
@@ -37,8 +46,10 @@ client.once('ready', () =>{
                         `**Participants:** \`${data.data.info.participant_count}\`
                         **Event type:** \`${data.data.info.skill}\`
                         **Status:** \`${data.data.info.status_text}\`
-                        **Start:** \`${data.data.info.start_date}\`
-                        **End:** \`${data.data.info.end_date}\`
+                        **Start:** <t:${new Date(data.data.info.start_date).getTime()}>
+                        **End:** <t:${new Date(data.data.info.end_date).getTime()}>
+
+                        :clock1: ${times}
                         
                         ${string}`)
                     .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg')
