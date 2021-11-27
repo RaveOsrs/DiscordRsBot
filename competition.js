@@ -20,6 +20,11 @@ client.once('ready', () =>{
             .then(response => response.json())
             .then(data => {
                 console.log("Checking TempleOSRS comp");
+                const start = new Date(data.data.info.start_date).getTime();
+                const end = new Date(data.data.info.end_date).getTime();
+
+                console.log(start);
+                console.log(end);
                 let string = "";
                 for (let i = 0; i < 10; i++) {
                     string += `**${data.data.participants[i].username}**: `;
@@ -32,10 +37,10 @@ client.once('ready', () =>{
                 let times = "";
                 switch(data.data.info.status_text) {
                     case "Upcoming":
-                        times = `Starting in <t:${new Date(data.data.info.start_date).getTime()}:R>`;
+                        times = `Starting in <t:${start}:R>`;
                         break;
                     case "In progress" || "Finished":
-                        times = `Ending in <t:${new Date(data.data.info.end_date).getTime()}:R>`;
+                        times = `Ending in <t:${end}:R>`;
                         break;
                 }
                 const compEmbed = new MessageEmbed()
@@ -46,8 +51,8 @@ client.once('ready', () =>{
                         `**Participants:** \`${data.data.info.participant_count}\`
                         **Event type:** \`${data.data.info.skill}\`
                         **Status:** \`${data.data.info.status_text}\`
-                        **Start:** <t:${new Date(data.data.info.start_date).getTime()}>
-                        **End:** <t:${new Date(data.data.info.end_date).getTime()}>
+                        **Start:** <t:${start}>
+                        **End:** <t:${end}>
 
                         :clock1: ${times}
                         
