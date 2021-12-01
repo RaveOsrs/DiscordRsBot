@@ -36,7 +36,7 @@ module.exports = {
                     .setTitle(`${rsn}`)
                     .setAuthor(`${username}#${discriminator}`, `${avatar ? avatar : noAvatar}`)
                     .setDescription(
-                        `**Joined:** <t:${joined.toString().slice(0,-3)}>\n
+                        `**Joined:** <t:${joined.toString().slice(0,-3)}:D>\n
                         **Referrals:** ${referrals}
                         **Rank:** ${rank}
                         **Competition wins:** ${wins}`)

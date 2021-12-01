@@ -29,18 +29,21 @@ client.on('messageCreate', message =>{
   
             axios
             .post('https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws', params, config)
-            .then(function (response) {
+            .then(async function (response) {
                 const file = response.data;
-                message.channel.send("Welcome **" + NickName + "**!");
-  
-                            
+                                            
                 //change below to the actual bot channel used for commands
                 var Verified = message.member.guild.roles.cache.find(role => role.name === "Verified");
                 var Guest = message.member.guild.roles.cache.find(role => role.name === "Guest");
               
-                message.member.setNickname(NickName);
-                message.member.roles.add(Verified);
-                message.member.roles.remove(Guest);            
+                await message.member.setNickname(NickName)
+                    .catch(console.error);
+                await message.member.roles.add(Verified)
+                    .catch(console.error);
+                await message.member.roles.remove(Guest)
+                    .catch(console.error);
+
+                message.channel.send("Welcome **" + NickName + "**!");    
   
             })
             .catch(function (error) {

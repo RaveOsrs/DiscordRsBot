@@ -29,20 +29,27 @@ client.once('ready', () =>{
                     if (data.data.participants[i].xp_gained == null) {
                         string += "\`" + data.data.participants[i].xp_gained + "\`\n";
                     } else {
-                        string += "\`" + numberWithCommas(data.data.participants[i].xp_gained) + "\`\n";
+                        string += "\`" + numberWithCommas(Math.round((data.data.participants[i].xp_gained + Number.EPSILON) * 100) / 100) + "\`\n";
                     }
                 }
                 let times = "";
+                let color = "";
                 switch(data.data.info.status_text) {
                     case "Upcoming":
                         times = `Starting <t:${start}:R>`;
+                        color = "#ffa500";
                         break;
-                    case "In progress" || "Finished":
+                    case "In progress":
                         times = `Ending <t:${end}:R>`;
+                        color = "#00ff00";
+                        break;
+                    case "Finished":
+                        times = `Ending <t:${end}:R>`;
+                        color = "#ff0000";
                         break;
                 }
                 const compEmbed = new MessageEmbed()
-                    .setColor('#ffa500')
+                    .setColor(color)
                     .setTitle(`${data.data.info.name}`)
                     .setURL(`https://templeosrs.com/competitions/standings.php?id=${data.data.info.id}`)
                     .setDescription(
