@@ -65,7 +65,7 @@ client.once('ready', () =>{
                     .setThumbnail('https://pbs.twimg.com/profile_images/856908701659267072/_FlgMC0N_400x400.jpg')
                     .setTimestamp();
 
-                channel.bulkDelete(5)
+                channel.bulkDelete(1)
                     .then(channel.send({ embeds: [compEmbed] }))
                     .catch(console.error);
             })

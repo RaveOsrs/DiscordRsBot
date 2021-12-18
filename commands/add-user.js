@@ -23,7 +23,7 @@ module.exports = {
         const user = interaction.options.getUser('user');
         const date = Date.now();
         try {
-            await DB.ref('users/'+user.id).once('value').then(function(snapshot) {
+            await DB.ref('users/'+user.id).once('value').then(function(snapshot) { //add to database
                 if (!snapshot.exists()) {
                     DB.ref('users/'+user.id).set({
                         userId: user,
@@ -36,7 +36,8 @@ module.exports = {
                     });
                 }
             });
-            fetch(`https://templeosrs.com/api/add_group_member.php?`, {
+            await interaction.member.roles.add(client.guilds.cache.find(r => r.name == "Colonel")); //give colonel rank
+            fetch(`https://templeosrs.com/api/add_group_member.php?`, { //add to templeOSRS
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"

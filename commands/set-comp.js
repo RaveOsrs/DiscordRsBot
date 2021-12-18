@@ -19,11 +19,14 @@ module.exports = {
 	async execute(interaction) {
         const id = interaction.options.getInteger('id');
         const key = interaction.options.getString('key');
+        const channel = client.channels.cache.find(channel => channel.name == "competition");
 
         DB.ref('config').update({
             currentCompId: id,
             currentCompKey: key
         })
         .then(interaction.reply(`Current competition updated. (ID:${id}, Key: ${key})`))
+        .then(channel.send(`New competition. (${id})`));
+
 	}
 };
