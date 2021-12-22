@@ -1,7 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fetch = require('cross-fetch');
-const {Client, Intents} = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],partials: ["CHANNEL"] });
 const { groupID, groupKey } = require("../config.json");
 const admin = require('firebase-admin');
 
@@ -38,7 +36,8 @@ module.exports = {
                     });
                 }
             });
-            await interaction.member.roles.add(client.guilds.cache.find(r => r.name == "Colonel")); //give colonel rank
+
+            await interaction.member.roles.add("895369598076080158"); //give colonel rank
             fetch(`https://templeosrs.com/api/add_group_member.php?`, { //add to templeOSRS
                 method: 'POST',
                 headers: {
@@ -48,7 +47,7 @@ module.exports = {
             })
             .then(interaction.reply(`**${rsn}**, Has been added!`))
         } catch (error) {
-            interaction.reply('Oops, there was an error fetching the API');
+            interaction.reply('Oops, there was an error. Check the bot logs!');
             console.log(error);
         }
 	},
