@@ -37,7 +37,6 @@ module.exports = {
                 }
             });
 
-            await user.roles.add("895369598076080158"); //give colonel rank
             fetch(`https://templeosrs.com/api/add_group_member.php?`, { //add to templeOSRS
                 method: 'POST',
                 headers: {
