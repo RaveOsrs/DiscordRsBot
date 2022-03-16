@@ -16,7 +16,7 @@ client.once('ready', () =>{
             const secondRsn = child.child('1/rsn').val();
             const thirdTime = child.child('1/rsn').val();
             const thirdRsn = child.child('1/rsn').val();
-            message.channel.send("**"+child.key+"**" +
+            channel.send("**"+child.key+"**" +
                 ":first_place: - " + firstTime + " - " + firstRsn +
                 ":second_place: - " + secondTime + " - " + secondRsn +
                 ":third_place: - " + thirdTime + " - " + thirdRsn);
