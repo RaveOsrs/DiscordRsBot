@@ -6,8 +6,8 @@ const DB = admin.database();
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('ping')
-		.setDescription('Replies with Pong!'),
+		.setName('hof-refresh')
+		.setDescription('refresh the hof'),
 	async execute(interaction) {
 		const channel = client.channels.cache.find(channel => channel.name == "hof-test");
 
