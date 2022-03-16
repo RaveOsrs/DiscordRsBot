@@ -10,16 +10,16 @@ client.once('ready', () =>{
 
     DB.ref('hof').once('value', function(snapshot) {
         snapshot.forEach(function(child) {
-            const firstTime = child.child('1/rsn').val();
+            const firstTime = child.child('1/time').val();
             const firstRsn = child.child('1/rsn').val();
-            const secondTime = child.child('1/rsn').val();
-            const secondRsn = child.child('1/rsn').val();
-            const thirdTime = child.child('1/rsn').val();
-            const thirdRsn = child.child('1/rsn').val();
+            const secondTime = child.child('2/time').val();
+            const secondRsn = child.child('2/rsn').val();
+            const thirdTime = child.child('3/time').val();
+            const thirdRsn = child.child('3/rsn').val();
             channel.send("**"+child.key+"**" +
-                ":first_place: - " + firstTime + " - " + firstRsn +
-                ":second_place: - " + secondTime + " - " + secondRsn +
-                ":third_place: - " + thirdTime + " - " + thirdRsn);
+                "\n:first_place: - " + firstTime + " - " + firstRsn +
+                "\n:second_place: - " + secondTime + " - " + secondRsn +
+                "\n:third_place: - " + thirdTime + " - " + thirdRsn);
         })
     })
 
