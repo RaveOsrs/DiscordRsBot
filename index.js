@@ -145,5 +145,6 @@ namechangeRequire = require("./changeName.js");
 templeactivitiesRequire = require("./templeActivities.js");
 //forumappsRequire = require("./forumApps.js");
 competitionRequire = require("./competition.js");
+hofRequire = require("./HallOfFame.js");
 
 client.login(process.env.TOKEN);
