@@ -23,7 +23,11 @@ client.once('ready', () =>{
                                     if (data[x][activity].Skill == "Ehp") {
                                         channel.send(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)}${data[x][activity].Skill}!`);
                                     } else {
-                                        channel.send(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)}xp in ${data[x][activity].Skill}!`);
+                                        if (data[x][activity].Milestone == "xp") {
+                                            channel.send(`**${data[x][activity].Username}**, Reached ${numberWithCommas(data[x][activity].Xp)}xp in ${data[x][activity].Skill}!`);
+                                        } else {
+                                            channel.send(`**${data[x][activity].Username}**, Reached level ${numberWithCommas(data[x][activity].Xp)} in ${data[x][activity].Skill}!`);
+                                        }
                                     }
                                     break;
                                 case "Pvm":
